@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,15 +14,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class registroActivity extends AppCompatActivity {
 
-    private TextView etNombre, etApellidos, correo_electronico, etContrasena , repetir_contrasena, numero_telefono, fecha_nacimiento;
+    private TextView etNombre, etApellidos, correo_electronico, etContrasena, repetir_contrasena, numero_telefono, fecha_nacimiento;
     private Button btnRegistrarse;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
+
+    // Expresión regular para validar la contraseña
+    private static final Pattern PASSWORD_PATTERN =
+            Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!]).{8,}$");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +49,7 @@ public class registroActivity extends AppCompatActivity {
         fecha_nacimiento = findViewById(R.id.fecha_nacimiento);
         btnRegistrarse = findViewById(R.id.btnRegistrarse);
 
-        btnRegistrarse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                registrarUsuario();
-            }
-        });
+        btnRegistrarse.setOnClickListener(v -> registrarUsuario());
     }
 
     private void registrarUsuario() {
@@ -59,7 +61,7 @@ public class registroActivity extends AppCompatActivity {
         String telefono = numero_telefono.getText().toString().trim();
         String fechaNacimiento = fecha_nacimiento.getText().toString().trim();
 
-        // Validaciones
+        // Validaciones generales
         if (TextUtils.isEmpty(nombre) || TextUtils.isEmpty(apellidos) || TextUtils.isEmpty(correo) ||
                 TextUtils.isEmpty(contrasena) || TextUtils.isEmpty(repetirContrasena) ||
                 TextUtils.isEmpty(telefono) || TextUtils.isEmpty(fechaNacimiento)) {
@@ -67,6 +69,25 @@ public class registroActivity extends AppCompatActivity {
             return;
         }
 
+        // Validar formato de email
+        if (!Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
+            Toast.makeText(this, "Introduce un correo electrónico válido", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Validar formato de teléfono (solo números y al menos 9 dígitos)
+        if (!telefono.matches("\\d{9,}")) {
+            Toast.makeText(this, "Introduce un número de teléfono válido (mínimo 9 dígitos)", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Validar contraseña
+        if (!PASSWORD_PATTERN.matcher(contrasena).matches()) {
+            Toast.makeText(this, "La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial (@#$%^&+=!)", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        // Validar que las contraseñas coincidan
         if (!contrasena.equals(repetirContrasena)) {
             Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_SHORT).show();
             return;
@@ -83,7 +104,6 @@ public class registroActivity extends AppCompatActivity {
                         usuario.put("nombre", nombre);
                         usuario.put("apellidos", apellidos);
                         usuario.put("correo_electronico", correo);
-                        usuario.put("contrasena", contrasena);
                         usuario.put("numero_telefono", telefono);
                         usuario.put("fecha_nacimiento", fechaNacimiento);
 
