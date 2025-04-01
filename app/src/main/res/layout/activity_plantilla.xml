@@ -21,6 +21,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="153dp"
+            android:layout_height="41dp"
+            android:text="PLANTILLA"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.554"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.507" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.Guideline
@@ -67,18 +80,6 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_LogoLeft"
         app:layout_constraintTop_toTopOf="@+id/guideline_LogoTop"
         app:srcCompat="@drawable/logo_goiko" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TEXTO PRUEBA"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_LogoBot"
-        app:layout_constraintEnd_toEndOf="@+id/MargenTop"
-        app:layout_constraintStart_toStartOf="@+id/MargenTop"
-        app:layout_constraintTop_toTopOf="@+id/guideline_LogoTop" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_HomeBot"
