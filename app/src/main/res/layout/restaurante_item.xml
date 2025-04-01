@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contenedorRestaurante"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="12dp"
+    android:layout_marginBottom="7dp"
+    android:background="@drawable/bordes_redondos"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:theme="@style/Theme.TextMain">
+
+    <TextView
+        android:id="@+id/restName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Nombre restaurante"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineMid"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTop" />
+
+    <TextView
+        android:id="@+id/restAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="18dp"
+        android:text="Address"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineMid"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@+id/restName" />
+
+    <TextView
+        android:id="@+id/restTelephone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="18dp"
+        android:text="Telephone"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineMid"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@+id/restAddress" />
+
+    <TextView
+        android:id="@+id/restDistance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Distance"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineMid"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+        app:layout_constraintTop_toBottomOf="@+id/restTelephone" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineMid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <ImageView
+        android:id="@+id/ubicacion_logo"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+        app:layout_constraintTop_toTopOf="@+id/restAddress"
+        app:srcCompat="@drawable/logo_ubicacion" />
+
+    <ImageView
+        android:id="@+id/telefono_logo"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        app:layout_constraintStart_toStartOf="@+id/guidelineLeft"
+        app:layout_constraintTop_toTopOf="@+id/restTelephone"
+        app:srcCompat="@drawable/logo_telefono" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
