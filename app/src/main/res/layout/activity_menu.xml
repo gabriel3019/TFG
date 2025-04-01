@@ -110,25 +110,13 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.55" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:backgroundTint="?attr/selectableItemBackgroundBorderless"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_HomeBot"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_HomeRight"
-        app:layout_constraintStart_toStartOf="@+id/guideline_HomeLeft"
-        app:layout_constraintTop_toTopOf="@+id/guideline_HomeTop"
-        app:srcCompat="@drawable/logo_home" />
-
     <Button
         android:id="@+id/btnCarta"
         android:layout_width="141dp"
+        android:backgroundTint="#000000"
         android:layout_height="150dp"
         android:layout_marginBottom="4dp"
-        android:background="@drawable/button_background"
+        android:background="@drawable/button_black"
         android:text="CARTA"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline19"
