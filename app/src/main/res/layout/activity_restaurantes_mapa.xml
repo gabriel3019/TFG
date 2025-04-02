@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/red"
     android:theme="@style/Theme.TextMain"
-    tools:context=".plantillaActivity">
+    tools:context=".restaurantesMapaActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/MargenTop"
@@ -27,7 +27,7 @@
         android:id="@+id/textView"
         android:layout_width="153dp"
         android:layout_height="41dp"
-        android:text="PLANTILLA"
+        android:text="RESTAURANTES"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="30sp"
@@ -121,5 +121,27 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_HomeLeft"
         app:layout_constraintTop_toTopOf="@+id/guideline_HomeTop"
         app:srcCompat="@drawable/logo_home" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/fondoUsable"
+        android:layout_width="350dp"
+        android:layout_height="540dp"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_HomeTop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_Top" />
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="350dp"
+        android:layout_height="540dp"
+        app:layout_constraintBottom_toBottomOf="@+id/fondoUsable"
+        app:layout_constraintEnd_toEndOf="@+id/fondoUsable"
+        app:layout_constraintStart_toStartOf="@+id/fondoUsable"
+        app:layout_constraintTop_toTopOf="@+id/fondoUsable" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

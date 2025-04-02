@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/red"
     android:theme="@style/Theme.TextMain"
-    tools:context=".plantillaActivity">
+    tools:context=".restaurantesListaActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/MargenTop"
@@ -27,7 +27,7 @@
         android:id="@+id/textView"
         android:layout_width="153dp"
         android:layout_height="41dp"
-        android:text="PLANTILLA"
+        android:text="RESTAURANTES"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="30sp"
@@ -121,5 +121,18 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_HomeLeft"
         app:layout_constraintTop_toTopOf="@+id/guideline_HomeTop"
         app:srcCompat="@drawable/logo_home" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/gym_recycler_view"
+        android:layout_width="350dp"
+        android:layout_height="540dp"
+        android:scrollbarSize="8dp"
+        android:scrollbarThumbVertical="@drawable/scrollbar_thumb"
+        android:scrollbarTrackVertical="@color/scrollbar_track_color"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_HomeTop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline_Top" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
