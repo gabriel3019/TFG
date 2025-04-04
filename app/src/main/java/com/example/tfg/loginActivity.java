@@ -35,31 +35,32 @@ public class loginActivity extends AppCompatActivity {
         IniciarSesion.setOnClickListener(v -> iniciarSesion());
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
+
     private void iniciarSesion() {
         String correo = etCorreo.getText().toString().trim();
         String contrasena = etContrasena.getText().toString().trim();
 
-        // Validaciones generales
         if (TextUtils.isEmpty(correo) || TextUtils.isEmpty(contrasena)) {
             Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Validar formato de email
         if (!Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
             Toast.makeText(this, "Introduce un correo electrónico válido", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Iniciar sesión con Firebase Authentication
         mAuth.signInWithEmailAndPassword(correo, contrasena)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        // Si el inicio de sesión es exitoso, redirige al menú principal
                         startActivity(new Intent(loginActivity.this, menuActivity.class));
-                        finish(); // Cierra esta actividad para evitar que el usuario regrese a la pantalla de inicio de sesión
+                        finish(); // Cierra loginActivity
                     } else {
-                        // Si ocurre un error, muestra el mensaje de error
                         Toast.makeText(loginActivity.this, "Error en el inicio de sesión: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });

@@ -45,7 +45,7 @@
     <EditText
         android:id="@+id/nombre"
         android:layout_width="215dp"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:background="@color/white"
         android:ems="10"
         android:hint="Tu nombre"
@@ -66,7 +66,7 @@
     <EditText
         android:id="@+id/apellidos"
         android:layout_width="215dp"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:background="@color/white"
         android:ems="10"
         android:hint="Tus apellidos"
@@ -86,7 +86,7 @@
     <EditText
         android:id="@+id/correo_electronico"
         android:layout_width="215dp"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:background="@color/white"
         android:ems="10"
         android:hint="Tu correo electronico"
@@ -113,7 +113,7 @@
     <EditText
         android:id="@+id/contrasena"
         android:layout_width="215dp"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:background="@color/white"
         android:ems="10"
         android:hint="Tu contraseña"
@@ -133,7 +133,7 @@
     <EditText
         android:id="@+id/repetir_contrasena"
         android:layout_width="215dp"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:background="@color/white"
         android:ems="10"
         android:hint="Repite la contrasena"
@@ -153,7 +153,7 @@
     <EditText
         android:id="@+id/numero_telefono"
         android:layout_width="215dp"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:background="@color/white"
         android:ems="10"
         android:hint="Tu numero de telefono"
@@ -172,7 +172,7 @@
     <EditText
         android:id="@+id/fecha_nacimiento"
         android:layout_width="215dp"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:background="@color/white"
         android:ems="10"
         android:hint="Tu fecha de nacimiento"
@@ -192,7 +192,7 @@
     <Button
         android:id="@+id/btnRegistrarse"
         android:layout_width="142dp"
-        android:layout_height="38dp"
+        android:layout_height="48dp"
         android:backgroundTint="#ee2737"
         android:text="Registrarse"
         app:layout_constraintBottom_toTopOf="@+id/guideline11"
@@ -210,7 +210,7 @@
     <EditText
         android:id="@+id/Iniciar_sesion"
         android:layout_width="257dp"
-        android:layout_height="47dp"
+        android:layout_height="48dp"
         android:ems="10"
         android:inputType="text"
         android:text="Ya tienes cuenta? Iniciar sesion"

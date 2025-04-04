@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GOIKO</string>
+    <string name="describir_perfil">Ir al perfil del usuario</string> <!-- Descripción accesible para el botón del perfil -->
 </resources>
