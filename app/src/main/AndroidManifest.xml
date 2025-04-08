@@ -23,7 +23,7 @@
 
         <!-- Actividad principal de la aplicación (loginActivity) -->
         <activity
-            android:name=".restaurantesListaActivity"
+            android:name=".loginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,7 +37,7 @@
             android:exported="true" />
 
         <activity
-            android:name=".loginActivity"
+            android:name=".restaurantesListaActivity"
             android:exported="false" />
 
         <activity
