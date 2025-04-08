@@ -109,15 +109,29 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.55" />
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="2dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_HomeBot"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_HomeRight"
+        app:layout_constraintStart_toStartOf="@+id/guideline_HomeLeft"
+        app:layout_constraintTop_toTopOf="@+id/guideline_HomeTop"
+        app:srcCompat="@drawable/logo_home" />
+
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/gym_recycler_view"
+        android:id="@+id/restRecyclerView"
         android:layout_width="350dp"
-        android:layout_height="540dp"
-        android:scrollbarSize="8dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:scrollbars="vertical"
         android:scrollbarThumbVertical="@drawable/scrollbar_thumb"
         android:scrollbarTrackVertical="@color/scrollbar_track_color"
-        android:scrollbars="vertical"
+        android:scrollbarSize="8dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline_HomeTop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
