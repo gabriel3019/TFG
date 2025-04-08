@@ -6,6 +6,10 @@
     <!-- Permisos para acceder a Internet, si la aplicación lo requiere -->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- Permisos de ubicación -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -19,7 +23,7 @@
 
         <!-- Actividad principal de la aplicación (loginActivity) -->
         <activity
-            android:name=".loginActivity"
+            android:name=".restaurantesListaActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +37,7 @@
             android:exported="true" />
 
         <activity
-            android:name=".restaurantesListaActivity"
+            android:name=".loginActivity"
             android:exported="false" />
 
         <activity
