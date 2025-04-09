@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -105,7 +104,6 @@ public class restaurantesListaActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         listaRestaurantes.clear();
                         for (DocumentSnapshot document : task.getResult()) {
-                            Log.d("Firestore", "Doc: " + document.getData());
                             String name = document.getString("nombre");
                             String address = document.getString("direccion");
                             double telephone = document.getDouble("telefono");
