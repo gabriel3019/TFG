@@ -18,6 +18,9 @@
         android:theme="@style/Theme.Tfg"
         tools:targetApi="31">
         <activity
+            android:name=".entrantesActivity"
+            android:exported="false" />
+        <activity
             android:name=".cartaActivity"
             android:exported="true" />
         <activity
