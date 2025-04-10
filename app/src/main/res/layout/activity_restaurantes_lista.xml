@@ -110,7 +110,7 @@
         app:layout_constraintGuide_percent="0.55" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/buttonHome"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="2dp"

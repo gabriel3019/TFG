@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/red"
     android:theme="@style/Theme.TextMain"
-    tools:context=".plantillaActivity">
+    tools:context=".elegirRestaurantesActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/MargenTop"
@@ -27,7 +27,7 @@
         android:id="@+id/textView"
         android:layout_width="153dp"
         android:layout_height="41dp"
-        android:text="PLANTILLA"
+        android:text="RESTAURANTES"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="30sp"
@@ -122,5 +122,65 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_HomeTop"
         app:srcCompat="@drawable/logo_home" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_boton1Top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_boton1Bot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_boton2Bot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_boton2Top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.55" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_botonesRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <Button
+        android:id="@+id/buttonListaRest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:height="120dp"
+        android:backgroundTint="@color/black"
+        android:text="Mostrar lista\nde restaurantes\nordenador por\ncercanía"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_boton1Bot"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_botonesRight"
+        app:layout_constraintStart_toStartOf="@+id/guideline_LogoRight"
+        app:layout_constraintTop_toTopOf="@+id/guideline_boton1Top" />
+
+    <Button
+        android:id="@+id/buttonMapaRest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:height="120dp"
+        android:backgroundTint="@color/black"
+        android:text="Mostrar en un\nmapa todos\nlos restaurantes"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_boton2Bot"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_botonesRight"
+        app:layout_constraintStart_toStartOf="@+id/guideline_LogoRight"
+        app:layout_constraintTop_toTopOf="@+id/guideline_boton2Top" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

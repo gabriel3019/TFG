@@ -1,9 +1,11 @@
 package com.example.tfg;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -34,6 +36,7 @@ public class restaurantesListaActivity extends AppCompatActivity {
     private RecyclerView restRecyclerView;
     private RestAdapter restAdapter;
     private ArrayList<Restaurante> listaRestaurantes = new ArrayList<>();
+    private ImageButton btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,13 @@ public class restaurantesListaActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        btnHome = findViewById(R.id.buttonHome);
+
+        btnHome.setOnClickListener(v -> {
+            Intent intent = new Intent(restaurantesListaActivity.this, menuActivity.class);
+            startActivity(intent);
         });
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
