@@ -1,291 +1,291 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/red"
-    android:theme="@style/Theme.TextMain"
-    tools:context=".cartaActivity">
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/main"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/red"
+android:theme="@style/Theme.TextMain">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/MargenTop"
-        android:layout_width="411dp"
-        android:layout_height="110dp"
-        android:background="@color/black"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/MargenTop"
+    android:layout_width="411dp"
+    android:layout_height="110dp"
+    android:background="@color/black"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="0dp"
+    tools:ignore="MissingConstraints">
 
-        <ImageView
-            android:id="@+id/LogoGoiko"
-            android:layout_width="97dp"
-            android:layout_height="79dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline32"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/logo_goiko" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline32"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="128dp" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="153dp"
-        android:layout_height="41dp"
-        android:text="CARTA"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_LogoBot"
-        app:layout_constraintEnd_toEndOf="@+id/MargenTop"
-        app:layout_constraintStart_toStartOf="@+id/MargenTop"
-        app:layout_constraintTop_toTopOf="@+id/guideline_LogoTop" />
+    <ImageView
+        android:id="@+id/LogoGoiko"
+        android:layout_width="97dp"
+        android:layout_height="79dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline32"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_goiko" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_Top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_LogoLeft"
+        android:id="@+id/guideline32"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05" />
+        app:layout_constraintGuide_begin="128dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_LogoRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.69" />
+<TextView
+    android:id="@+id/textView"
+    android:layout_width="153dp"
+    android:layout_height="41dp"
+    android:text="CARTA"
+    android:textAlignment="center"
+    android:textColor="@color/white"
+    android:textSize="30sp"
+    app:layout_constraintBottom_toTopOf="@+id/guideline_LogoBot"
+    app:layout_constraintEnd_toEndOf="@+id/MargenTop"
+    app:layout_constraintStart_toStartOf="@+id/MargenTop"
+    app:layout_constraintTop_toTopOf="@+id/guideline_LogoTop" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_LogoTop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.02" />
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline_Top"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.15" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_LogoBot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.13" />
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline_LogoLeft"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.05" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_HomeBot"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.98" />
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline_LogoRight"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.69" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_HomeTop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.89" />
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline_LogoTop"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.02" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_HomeLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline_LogoBot"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.13" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_HomeRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.55" />
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline_HomeBot"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.98" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="164dp"
-        android:layout_height="101dp"
-        android:background="@null"
-        android:cropToPadding="false"
-        android:padding="0dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/guideline33"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_HomeLeft"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline_Top"
-        app:srcCompat="@drawable/entrantes"
-        tools:ignore="MissingConstraints" />
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline_HomeTop"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.89" />
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="164dp"
-        android:layout_height="101dp"
-        android:background="@null"
-        android:cropToPadding="false"
-        android:padding="0dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/guideline33"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.439"
-        app:layout_constraintStart_toStartOf="@+id/guideline_HomeLeft"
-        app:layout_constraintTop_toTopOf="@+id/guideline_Top"
-        app:srcCompat="@drawable/hamburguesas"
-        tools:ignore="MissingConstraints" />
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline_HomeLeft"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.5" />
 
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="164dp"
-        android:layout_height="102dp"
-        android:background="@null"
-        android:cropToPadding="false"
-        android:padding="0dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/guideline34"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_HomeLeft"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline33"
-        app:srcCompat="@drawable/smash_burgers"
-        tools:ignore="MissingConstraints" />
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline_HomeRight"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.55" />
 
-    <ImageButton
-        android:id="@+id/imageButton4"
-        android:layout_width="162dp"
-        android:layout_height="103dp"
-        android:background="@null"
-        android:cropToPadding="false"
-        android:padding="0dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/guideline34"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline_HomeLeft"
-        app:layout_constraintTop_toTopOf="@+id/guideline33"
-        app:srcCompat="@drawable/chicken_lovers"
-        tools:ignore="MissingConstraints" />
+<ImageButton
+    android:id="@+id/imageButton"
+    android:layout_width="164dp"
+    android:layout_height="101dp"
+    android:background="@null"
+    android:cropToPadding="false"
+    android:padding="0dp"
+    android:scaleType="fitXY"
+    app:layout_constraintBottom_toTopOf="@+id/guideline33"
+    app:layout_constraintEnd_toStartOf="@+id/guideline_HomeLeft"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/guideline_Top"
+    app:srcCompat="@drawable/entrantes"
+    tools:ignore="MissingConstraints" />
 
-    <ImageButton
-        android:id="@+id/imageButton5"
-        android:layout_width="164dp"
-        android:layout_height="101dp"
-        android:background="@null"
-        android:cropToPadding="false"
-        android:padding="0dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/guideline35"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_HomeLeft"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline34"
-        app:srcCompat="@drawable/para_peques"
-        tools:ignore="MissingConstraints" />
+<ImageButton
+    android:id="@+id/imageButton2"
+    android:layout_width="164dp"
+    android:layout_height="101dp"
+    android:background="@null"
+    android:cropToPadding="false"
+    android:padding="0dp"
+    android:scaleType="fitXY"
+    app:layout_constraintBottom_toTopOf="@+id/guideline33"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.439"
+    app:layout_constraintStart_toStartOf="@+id/guideline_HomeLeft"
+    app:layout_constraintTop_toTopOf="@+id/guideline_Top"
+    app:srcCompat="@drawable/hamburguesas"
+    tools:ignore="MissingConstraints" />
 
-    <ImageButton
-        android:id="@+id/imageButton6"
-        android:layout_width="160dp"
-        android:layout_height="102dp"
-        android:background="@null"
-        android:cropToPadding="false"
-        android:padding="0dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/guideline35"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline_HomeLeft"
-        app:layout_constraintTop_toTopOf="@+id/guideline34"
-        app:srcCompat="@drawable/salads"
-        tools:ignore="MissingConstraints" />
+<ImageButton
+    android:id="@+id/imageButton3"
+    android:layout_width="164dp"
+    android:layout_height="102dp"
+    android:background="@null"
+    android:cropToPadding="false"
+    android:padding="0dp"
+    android:scaleType="fitXY"
+    app:layout_constraintBottom_toTopOf="@+id/guideline34"
+    app:layout_constraintEnd_toStartOf="@+id/guideline_HomeLeft"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/guideline33"
+    app:srcCompat="@drawable/smash_burgers"
+    tools:ignore="MissingConstraints" />
 
-    <ImageButton
-        android:id="@+id/imageButton7"
-        android:layout_width="164dp"
-        android:layout_height="100dp"
-        android:background="@null"
-        android:cropToPadding="false"
-        android:padding="0dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/guideline36"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_HomeLeft"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline35"
-        app:srcCompat="@drawable/postres"
-        tools:ignore="MissingConstraints" />
+<ImageButton
+    android:id="@+id/imageButton4"
+    android:layout_width="162dp"
+    android:layout_height="103dp"
+    android:background="@null"
+    android:cropToPadding="false"
+    android:padding="0dp"
+    android:scaleType="fitXY"
+    app:layout_constraintBottom_toTopOf="@+id/guideline34"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="@+id/guideline_HomeLeft"
+    app:layout_constraintTop_toTopOf="@+id/guideline33"
+    app:srcCompat="@drawable/chicken_lovers"
+    tools:ignore="MissingConstraints" />
 
-    <ImageButton
-        android:id="@+id/imageButton8"
-        android:layout_width="162dp"
-        android:layout_height="98dp"
-        android:background="@null"
-        android:cropToPadding="false"
-        android:padding="0dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/guideline36"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline_HomeLeft"
-        app:layout_constraintTop_toTopOf="@+id/guideline35"
-        app:srcCompat="@drawable/bebidas"
-        tools:ignore="MissingConstraints" />
+<ImageButton
+    android:id="@+id/imageButton5"
+    android:layout_width="164dp"
+    android:layout_height="101dp"
+    android:background="@null"
+    android:cropToPadding="false"
+    android:padding="0dp"
+    android:scaleType="fitXY"
+    app:layout_constraintBottom_toTopOf="@+id/guideline35"
+    app:layout_constraintEnd_toStartOf="@+id/guideline_HomeLeft"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/guideline34"
+    app:srcCompat="@drawable/para_peques"
+    tools:ignore="MissingConstraints" />
 
-    <ImageButton
-        android:id="@+id/imageButton9"
-        android:layout_width="162dp"
-        android:layout_height="99dp"
-        android:background="@null"
-        android:cropToPadding="false"
-        android:padding="0dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_HomeBot"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_HomeLeft"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline36"
-        app:srcCompat="@drawable/menu_goiko"
-        tools:ignore="MissingConstraints" />
+<ImageButton
+    android:id="@+id/imageButton6"
+    android:layout_width="160dp"
+    android:layout_height="102dp"
+    android:background="@null"
+    android:cropToPadding="false"
+    android:padding="0dp"
+    android:scaleType="fitXY"
+    app:layout_constraintBottom_toTopOf="@+id/guideline35"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="@+id/guideline_HomeLeft"
+    app:layout_constraintTop_toTopOf="@+id/guideline34"
+    app:srcCompat="@drawable/salads"
+    tools:ignore="MissingConstraints" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline33"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="239dp" />
+<ImageButton
+    android:id="@+id/imageButton7"
+    android:layout_width="164dp"
+    android:layout_height="100dp"
+    android:background="@null"
+    android:cropToPadding="false"
+    android:padding="0dp"
+    android:scaleType="fitXY"
+    app:layout_constraintBottom_toTopOf="@+id/guideline36"
+    app:layout_constraintEnd_toStartOf="@+id/guideline_HomeLeft"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/guideline35"
+    app:srcCompat="@drawable/postres"
+    tools:ignore="MissingConstraints" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline34"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="355dp" />
+<ImageButton
+    android:id="@+id/imageButton8"
+    android:layout_width="162dp"
+    android:layout_height="98dp"
+    android:background="@null"
+    android:cropToPadding="false"
+    android:padding="0dp"
+    android:scaleType="fitXY"
+    app:layout_constraintBottom_toTopOf="@+id/guideline36"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="@+id/guideline_HomeLeft"
+    app:layout_constraintTop_toTopOf="@+id/guideline35"
+    app:srcCompat="@drawable/bebidas"
+    tools:ignore="MissingConstraints" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline35"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="480dp" />
+<ImageButton
+    android:id="@+id/imageButton9"
+    android:layout_width="162dp"
+    android:layout_height="99dp"
+    android:background="@null"
+    android:cropToPadding="false"
+    android:padding="0dp"
+    android:scaleType="fitXY"
+    app:layout_constraintBottom_toTopOf="@+id/guideline_HomeBot"
+    app:layout_constraintEnd_toStartOf="@+id/guideline_HomeLeft"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/guideline36"
+    app:srcCompat="@drawable/menu_goiko"
+    tools:ignore="MissingConstraints" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline36"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="595dp" />
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline33"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_begin="239dp" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MENU PRINCIPAL"
-        android:backgroundTint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_HomeBot"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline_HomeLeft"
-        app:layout_constraintTop_toTopOf="@+id/guideline_HomeTop" />
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline34"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_begin="355dp" />
+
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline35"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_begin="480dp" />
+
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline36"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_begin="595dp" />
+
+<Button
+    android:id="@+id/button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="MENU PRINCIPAL"
+    android:backgroundTint="@color/black"
+    app:layout_constraintBottom_toTopOf="@+id/guideline_HomeBot"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="@+id/guideline_HomeLeft"
+    app:layout_constraintTop_toTopOf="@+id/guideline_HomeTop" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
