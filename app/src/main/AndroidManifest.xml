@@ -17,6 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tfg"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDi9L5LyapmFz856mVgBZHwgnIyyV-8wC8" />
+
         <activity
             android:name=".elegirRestaurantesActivity"
             android:exported="false" />

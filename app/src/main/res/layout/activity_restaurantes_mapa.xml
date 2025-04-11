@@ -125,7 +125,9 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/fondoUsable"
         android:layout_width="350dp"
-        android:layout_height="540dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         android:background="@color/white"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
@@ -134,16 +136,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline_Top" />
 
-    <!--
- <fragment
-     android:id="@+id/map"
-     android:name="com.google.android.gms.maps.SupportMapFragment"
-     android:layout_width="350dp"
-     android:layout_height="540dp"
-     app:layout_constraintBottom_toBottomOf="@+id/fondoUsable"
-     app:layout_constraintEnd_toEndOf="@+id/fondoUsable"
-     app:layout_constraintStart_toStartOf="@+id/fondoUsable"
-     app:layout_constraintTop_toTopOf="@+id/fondoUsable" />
- -->
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="350dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/fondoUsable"
+        app:layout_constraintEnd_toEndOf="@+id/fondoUsable"
+        app:layout_constraintStart_toStartOf="@+id/fondoUsable"
+        app:layout_constraintTop_toTopOf="@+id/fondoUsable" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
