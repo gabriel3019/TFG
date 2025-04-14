@@ -22,8 +22,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="182dp"
-        android:layout_height="271dp"
+        android:layout_width="385dp"
+        android:layout_height="347dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline12"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
         android:layout_height="48dp"
         android:background="@color/white"
         android:ems="10"
-        android:hint=" Correo elerctronico"
+        android:hint="   Correo elerctronico"
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/guideline13"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,8 +50,8 @@
         android:layout_height="48dp"
         android:background="@color/white"
         android:ems="10"
-        android:hint=" Contraseña"
-        android:inputType="text"
+        android:hint="   Contraseña"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/guideline15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,28 +62,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="312dp" />
+        app:layout_constraintGuide_begin="514dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="485dp" />
+        app:layout_constraintGuide_begin="547dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="438dp" />
+        app:layout_constraintGuide_begin="514dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="564dp" />
+        app:layout_constraintGuide_begin="653dp" />
 
     <EditText
         android:id="@+id/registrarse"
@@ -91,7 +91,7 @@
         android:layout_height="48dp"
         android:ems="10"
         android:inputType="text"
-        android:text="  Registrarse"
+        android:text="     Registrarse"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline18"
         app:layout_constraintEnd_toEndOf="parent"
@@ -105,19 +105,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="595dp" />
+        app:layout_constraintGuide_begin="645dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="663dp" />
+        app:layout_constraintGuide_begin="710dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="718dp" />
+        app:layout_constraintGuide_begin="768dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
