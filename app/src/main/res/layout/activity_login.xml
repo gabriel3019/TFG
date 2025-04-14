@@ -51,7 +51,7 @@
         android:background="@color/white"
         android:ems="10"
         android:hint="   Contraseña"
-        android:inputType="text"
+        android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/guideline15"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

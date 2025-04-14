@@ -134,7 +134,7 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/entrantes"
         android:layout_width="173dp"
         android:layout_height="114dp"
         android:background="@null"
@@ -150,7 +150,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/hamburguesas"
         android:layout_width="173dp"
         android:layout_height="115dp"
         android:background="@null"
@@ -165,7 +165,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/smashBurgers"
         android:layout_width="172dp"
         android:layout_height="114dp"
         android:background="@null"
@@ -180,7 +180,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/chickenLovers"
         android:layout_width="174dp"
         android:layout_height="111dp"
         android:background="@null"
@@ -195,7 +195,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/paraPeques"
         android:layout_width="173dp"
         android:layout_height="114dp"
         android:background="@null"
@@ -210,7 +210,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageButton
-        android:id="@+id/imageButton6"
+        android:id="@+id/salads"
         android:layout_width="175dp"
         android:layout_height="113dp"
         android:background="@null"
@@ -226,7 +226,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageButton
-        android:id="@+id/imageButton7"
+        android:id="@+id/postres"
         android:layout_width="175dp"
         android:layout_height="116dp"
         android:background="@null"
@@ -241,7 +241,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageButton
-        android:id="@+id/imageButton8"
+        android:id="@+id/bebidas"
         android:layout_width="175dp"
         android:layout_height="115dp"
         android:background="@null"
@@ -256,7 +256,7 @@
         tools:ignore="MissingConstraints" />
 
     <ImageButton
-        android:id="@+id/imageButton9"
+        android:id="@+id/menuGoiko"
         android:layout_width="174dp"
         android:layout_height="116dp"
         android:background="@null"
