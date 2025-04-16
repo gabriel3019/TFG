@@ -14,6 +14,8 @@ public class menuActivity extends AppCompatActivity {
     private Button btnCarta;
     private Button btnRestaurantes;
 
+    private Button btnBebidas;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +24,7 @@ public class menuActivity extends AppCompatActivity {
         btnPerfil = findViewById(R.id.Perfil);
         btnCarta = findViewById(R.id.btnCarta);
         btnRestaurantes = findViewById(R.id.btnRestaurantes);
+        btnBebidas = findViewById(R.id.btnBebidas);
 
 
         btnPerfil.setOnClickListener(v -> {
@@ -38,6 +41,11 @@ public class menuActivity extends AppCompatActivity {
             Intent intent = new Intent(menuActivity.this, elegirRestaurantesActivity.class);
             startActivity(intent);
         });
+
+        btnBebidas.setOnClickListener( v -> {
+            Intent intent = new Intent(menuActivity.this, bebidasActivity.class);
+            startActivity(intent);
+        } );
     }
 
 
