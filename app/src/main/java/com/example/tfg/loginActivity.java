@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class loginActivity extends AppCompatActivity {
 
-    private EditText etCorreo, etContrasena;
+    private EditText etCorreo, etContrasena, registrarse;
     private Button IniciarSesion;
     private FirebaseAuth mAuth;
 
@@ -30,9 +30,15 @@ public class loginActivity extends AppCompatActivity {
         etCorreo = findViewById(R.id.correo_electronico);
         etContrasena = findViewById(R.id.contrasena);
         IniciarSesion = findViewById(R.id.btnIniciarSesion);
+        registrarse = findViewById(R.id.registrarse);
 
         // Establecer el comportamiento del botón de iniciar sesión
         IniciarSesion.setOnClickListener(v -> iniciarSesion());
+
+        registrarse.setOnClickListener( v -> {
+            Intent intent = new Intent(loginActivity.this, registroActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
