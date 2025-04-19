@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.tfg">
+
     <!-- Permisos -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -28,38 +29,20 @@
             </intent-filter>
         </activity>
 
-        <!-- Otras actividades -->
-        <activity android:name=".cartaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity_Hamburguesas"
-            android:exported="true" />
-        <activity
-            android:name=".bebidasActivity"
-            android:exported="true" />
-        <activity
-            android:name=".elegirRestaurantesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".perfilActivity"
-            android:exported="true" />
-        <activity
-            android:name=".restaurantesListaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".restaurantesMapaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".plantillaActivity"
-            android:exported="false" />
-        <activity
-            android:name=".registroActivity"
-            android:exported="true" />
-        <activity
-            android:name=".menuActivity"
-            android:exported="true" />
+        <!-- Resto de actividades -->
+        <activity android:name=".smashburgerActivity" android:exported="true" />
+        <activity android:name=".cartaActivity" android:exported="false" />
+        <activity android:name=".activity_Hamburguesas" android:exported="true" />
+        <activity android:name=".bebidasActivity" android:exported="true" />
+        <activity android:name=".elegirRestaurantesActivity" android:exported="false" />
+        <activity android:name=".perfilActivity" android:exported="true" />
+        <activity android:name=".restaurantesListaActivity" android:exported="false" />
+        <activity android:name=".restaurantesMapaActivity" android:exported="false" />
+        <activity android:name=".plantillaActivity" android:exported="false" />
+        <activity android:name=".registroActivity" android:exported="true" />
+        <activity android:name=".menuActivity" android:exported="true" />
 
-        <!-- API Key de mapas -->
+        <!-- API Key de Google Maps -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="API-KEY" />
