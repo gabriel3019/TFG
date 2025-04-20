@@ -139,33 +139,36 @@
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="137dp"
-        android:layout_height="134dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline63"
         app:layout_constraintEnd_toStartOf="@+id/guideline_HomeLeft"
         app:layout_constraintStart_toStartOf="@+id/guideline_LogoLeft"
         app:layout_constraintTop_toTopOf="@+id/guideline62"
-        app:srcCompat="@drawable/clover1" />
+        app:srcCompat="@drawable/clover1"
+        android:scaleType="fitXY"/>
 
     <ImageView
         android:id="@+id/imageView7"
-        android:layout_width="137dp"
-        android:layout_height="134dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline63"
         app:layout_constraintEnd_toStartOf="@+id/guideline65"
         app:layout_constraintStart_toStartOf="@+id/guideline_HomeRight"
         app:layout_constraintTop_toTopOf="@+id/guideline62"
-        app:srcCompat="@drawable/clover2" />
+        app:srcCompat="@drawable/clover2"
+        android:scaleType="fitXY"/>
 
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="137dp"
-        android:layout_height="134dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline64"
         app:layout_constraintEnd_toStartOf="@+id/guideline_HomeLeft"
         app:layout_constraintStart_toStartOf="@+id/guideline_LogoLeft"
         app:layout_constraintTop_toTopOf="@+id/guideline63"
-        app:srcCompat="@drawable/clover3" />
+        app:srcCompat="@drawable/clover3"
+        android:scaleType="fitXY"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline62"

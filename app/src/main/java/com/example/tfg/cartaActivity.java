@@ -3,16 +3,11 @@ package com.example.tfg;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class cartaActivity extends AppCompatActivity {
 
@@ -57,10 +52,10 @@ public class cartaActivity extends AppCompatActivity {
             startActivity(intent);
        });
 
-        // para_peques.setOnClickListener(v -> {
-//     Intent intent = new Intent(cartaActivity.this, parapequesActivity.class);
-//     startActivity(intent);
-// });
+       para_peques.setOnClickListener(v -> {
+            Intent intent = new Intent(cartaActivity.this, parapequesActivity.class);
+            startActivity(intent);
+       });
 
        salad.setOnClickListener(v -> {
             Intent intent = new Intent(cartaActivity.this, saladActivity.class);

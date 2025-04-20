@@ -140,7 +140,7 @@
             android:id="@+id/gridLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="2"
+            android:columnCount="3"
             android:padding="8dp"
             android:orientation="horizontal"
             android:alignmentMode="alignMargins"
@@ -156,9 +156,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/hamburguesa1" />
+                    android:layout_width="130dp"
+                    android:layout_height="135dp"
+                    android:src="@drawable/hamburguesa1"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Hamburguesa 2 -->
@@ -171,9 +172,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/hamburguesa2" />
+                    android:layout_width="130dp"
+                    android:layout_height="135dp"
+                    android:src="@drawable/hamburguesa2"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Hamburguesa 3 -->
@@ -186,9 +188,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/hamburguesa3" />
+                    android:layout_width="130dp"
+                    android:layout_height="135dp"
+                    android:src="@drawable/hamburguesa3"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Hamburguesa 4 -->
@@ -201,9 +204,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/hamburguesa4" />
+                    android:layout_width="130dp"
+                    android:layout_height="135dp"
+                    android:src="@drawable/hamburguesa4"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Hamburguesa 5 -->
@@ -216,9 +220,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/hamburguesa5" />
+                    android:layout_width="130dp"
+                    android:layout_height="135dp"
+                    android:src="@drawable/bomba_sexy"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Hamburguesa 6 -->
@@ -231,9 +236,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/hamburguesa6" />
+                    android:layout_width="130dp"
+                    android:layout_height="135dp"
+                    android:src="@drawable/hamburguesa6"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Hamburguesa 7 -->
@@ -246,9 +252,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/hamburguesa7" />
+                    android:layout_width="130dp"
+                    android:layout_height="135dp"
+                    android:src="@drawable/hamburguesa7"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Hamburguesa 8 -->
@@ -261,9 +268,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/hamburguesa8" />
+                    android:layout_width="130dp"
+                    android:layout_height="135dp"
+                    android:src="@drawable/retro"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Hamburguesa 9 -->
@@ -276,9 +284,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/hamburguesa9" />
+                    android:layout_width="130dp"
+                    android:layout_height="135dp"
+                    android:src="@drawable/hamburguesa9"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Hamburguesa 10 -->
@@ -291,9 +300,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/hamburguesa10" />
+                    android:layout_width="130dp"
+                    android:layout_height="135dp"
+                    android:src="@drawable/hamburguesa10"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Hamburguesa 11 -->
@@ -306,9 +316,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/hamburguesa11" />
+                    android:layout_width="130dp"
+                    android:layout_height="135dp"
+                    android:src="@drawable/moza"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Hamburguesa 12 -->
@@ -321,9 +332,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/hamburguesa12" />
+                    android:layout_width="130dp"
+                    android:layout_height="135dp"
+                    android:src="@drawable/greenchofa"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
         </GridLayout>

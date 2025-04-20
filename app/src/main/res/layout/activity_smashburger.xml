@@ -137,43 +137,47 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="137dp"
-        android:layout_height="134dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline57"
         app:layout_constraintEnd_toStartOf="@+id/guideline_HomeLeft"
         app:layout_constraintStart_toStartOf="@+id/guideline_LogoLeft"
         app:layout_constraintTop_toTopOf="@+id/guideline56"
-        app:srcCompat="@drawable/smash1" />
+        app:srcCompat="@drawable/smash1"
+        android:scaleType="fitXY"/>
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="137dp"
-        android:layout_height="134dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline57"
         app:layout_constraintEnd_toStartOf="@+id/guideline59"
         app:layout_constraintStart_toStartOf="@+id/guideline_HomeRight"
         app:layout_constraintTop_toTopOf="@+id/guideline56"
-        app:srcCompat="@drawable/smash2" />
+        app:srcCompat="@drawable/smash2"
+        android:scaleType="fitXY"/>
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="137dp"
-        android:layout_height="134dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline58"
         app:layout_constraintEnd_toStartOf="@+id/guideline_HomeLeft"
         app:layout_constraintStart_toStartOf="@+id/guideline_LogoLeft"
         app:layout_constraintTop_toTopOf="@+id/guideline57"
-        app:srcCompat="@drawable/smash3" />
+        app:srcCompat="@drawable/smash3"
+        android:scaleType="fitXY"/>
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="137dp"
-        android:layout_height="134dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline58"
         app:layout_constraintEnd_toStartOf="@+id/guideline59"
         app:layout_constraintStart_toStartOf="@+id/guideline_HomeRight"
         app:layout_constraintTop_toTopOf="@+id/guideline57"
-        app:srcCompat="@drawable/smash4" />
+        app:srcCompat="@drawable/smash4"
+        android:scaleType="fitXY"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline56"

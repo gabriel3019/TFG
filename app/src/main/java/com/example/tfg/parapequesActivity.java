@@ -11,7 +11,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class chickenloverActivity extends AppCompatActivity {
+public class parapequesActivity extends AppCompatActivity {
 
     private ImageButton buttonHome;
 
@@ -20,14 +20,14 @@ public class chickenloverActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_chickenlover);
+        setContentView(R.layout.activity_parapeques);
 
         buttonHome = findViewById(R.id.buttonHome);
 
         // Establecer el OnClickListener para el botón
         buttonHome.setOnClickListener(v -> {
             // Crear un Intent para ir a la actividad del menú
-            Intent intent = new Intent(chickenloverActivity.this, menuActivity.class); // Asegúrate de que el nombre de la actividad sea correcto
+            Intent intent = new Intent(parapequesActivity.this, menuActivity.class); // Asegúrate de que el nombre de la actividad sea correcto
             startActivity(intent); // Iniciar la actividad
         });
 

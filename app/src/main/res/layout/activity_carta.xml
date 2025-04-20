@@ -110,7 +110,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:columnCount="2"
-            android:padding="8dp"
+            android:padding="15dp"
             android:orientation="horizontal"
             android:alignmentMode="alignMargins"
             android:rowOrderPreserved="false">
@@ -126,9 +126,10 @@
 
                 <ImageView
                     android:id="@+id/entrantes"
-                    android:layout_width="137dp"
+                    android:layout_width="180dp"
                     android:layout_height="134dp"
-                    android:src="@drawable/carta1" />
+                    android:src="@drawable/carta1"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Carta 2 -->
@@ -142,9 +143,10 @@
 
                 <ImageView
                     android:id="@+id/hamburguesas"
-                    android:layout_width="137dp"
+                    android:layout_width="180dp"
                     android:layout_height="134dp"
-                    android:src="@drawable/carta2" />
+                    android:src="@drawable/carta2"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Carta 3 -->
@@ -158,9 +160,10 @@
 
                 <ImageView
                     android:id="@+id/smashburgers"
-                    android:layout_width="137dp"
+                    android:layout_width="180dp"
                     android:layout_height="134dp"
-                    android:src="@drawable/carta3" />
+                    android:src="@drawable/carta3"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- carta 4 -->
@@ -174,9 +177,10 @@
 
                 <ImageView
                     android:id="@+id/chicken_lovers"
-                    android:layout_width="137dp"
+                    android:layout_width="180dp"
                     android:layout_height="134dp"
-                    android:src="@drawable/carta4" />
+                    android:src="@drawable/carta4"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- carta 5 -->
@@ -190,9 +194,10 @@
 
                 <ImageView
                     android:id="@+id/para_peques"
-                    android:layout_width="137dp"
+                    android:layout_width="180dp"
                     android:layout_height="134dp"
-                    android:src="@drawable/carta5" />
+                    android:src="@drawable/carta5"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- carta 6 -->
@@ -206,9 +211,10 @@
 
                 <ImageView
                     android:id="@+id/salad"
-                    android:layout_width="137dp"
+                    android:layout_width="180dp"
                     android:layout_height="134dp"
-                    android:src="@drawable/carta6" />
+                    android:src="@drawable/carta6"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- carta 7 -->
@@ -222,9 +228,10 @@
 
                 <ImageView
                     android:id="@+id/postres"
-                    android:layout_width="137dp"
+                    android:layout_width="180dp"
                     android:layout_height="134dp"
-                    android:src="@drawable/carta7" />
+                    android:src="@drawable/carta7"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Carta 8 -->
@@ -238,9 +245,10 @@
 
                 <ImageView
                     android:id="@+id/bebidas"
-                    android:layout_width="137dp"
+                    android:layout_width="180dp"
                     android:layout_height="134dp"
-                    android:src="@drawable/carta8" />
+                    android:src="@drawable/carta8"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
         </GridLayout>
     </ScrollView>

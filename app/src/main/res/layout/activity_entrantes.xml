@@ -81,6 +81,123 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_LogoTop"
         app:srcCompat="@drawable/logo_goiko" />
 
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@+id/guideline_LogoBot"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_HomeTop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp">
+
+        <GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:padding="8dp"
+            android:orientation="horizontal"
+            android:alignmentMode="alignMargins"
+            android:rowOrderPreserved="false">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/crispy_chicken_wings"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/crispy_chicken_wings"
+                    android:scaleType="fitXY"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/teques"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/teques"
+                    android:scaleType="fitXY"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/teques_vinci"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/teque_vinci"
+                    android:scaleType="fitXY"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/chiquen_tenders"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/chicken_tenders" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/nachorreo"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/nachorreo" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_columnWeight="1"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:id="@+id/onion_rings"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/onion_rings" />
+            </LinearLayout>
+
+        </GridLayout>
+    </ScrollView>
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_HomeBot"
         android:layout_width="wrap_content"
@@ -110,7 +227,7 @@
         app:layout_constraintGuide_percent="0.55" />
 
     <ImageButton
-        android:id="@+id/entrantes"
+        android:id="@+id/buttonHome"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="2dp"
@@ -121,5 +238,4 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_HomeLeft"
         app:layout_constraintTop_toTopOf="@+id/guideline_HomeTop"
         app:srcCompat="@drawable/logo_home" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

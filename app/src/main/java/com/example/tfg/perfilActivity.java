@@ -9,7 +9,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class perfilActivity extends AppCompatActivity {
@@ -32,7 +31,7 @@ public class perfilActivity extends AppCompatActivity {
         etNombre = findViewById(R.id.nombre);
         etApellidos = findViewById(R.id.apellidos);
         etCorreo = findViewById(R.id.correo_electronico);
-        btnMenu = findViewById(R.id.btnMenu);
+        btnMenu = findViewById(R.id.buttonHome);
 
         // Establecer el OnClickListener para el botón
         btnMenu.setOnClickListener(v -> {

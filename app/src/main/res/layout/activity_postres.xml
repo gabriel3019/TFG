@@ -155,9 +155,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/postre1" />
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/postre1"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Postre 2 -->
@@ -170,9 +171,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/postre2" />
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/postre2"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Postre 3 -->
@@ -185,9 +187,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/postre3" />
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/postre3"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Postre 4 -->
@@ -200,9 +203,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/postre4" />
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/postre4"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- postre 5 -->
@@ -215,9 +219,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/postre5" />
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/postre5"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Postre 6 -->
@@ -230,9 +235,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/postre6" />
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/postre6"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Postre 7 -->
@@ -245,9 +251,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/postre7" />
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/postre7"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Postre 8 -->
@@ -260,9 +267,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/postre8" />
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/postre8"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Postre 9 -->
@@ -275,9 +283,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/postre9" />
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/postre9"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
 
             <!-- Postre 10 -->
@@ -290,9 +299,10 @@
                 android:gravity="center_horizontal">
 
                 <ImageView
-                    android:layout_width="137dp"
-                    android:layout_height="134dp"
-                    android:src="@drawable/postre10" />
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/postre10"
+                    android:scaleType="fitXY"/>
             </LinearLayout>
         </GridLayout>
     </ScrollView>

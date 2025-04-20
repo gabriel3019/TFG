@@ -11,4 +11,10 @@
         <item name="android:fontFamily">@font/bison</item>
     </style>
 
+    <style name="Theme.Tfg.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/black</item> <!-- Fondo del splash -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo_goiko2</item> <!-- Tu logo -->
+        <item name="postSplashScreenTheme">@style/Theme.Tfg</item> <!-- Vuelve al tema original -->
+    </style>
+
 </resources>
