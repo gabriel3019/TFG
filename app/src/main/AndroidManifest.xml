@@ -30,6 +30,7 @@
         </activity>
 
         <!-- Resto de actividades -->
+        <activity android:name=".saladActivity" android:exported="true" />
         <activity android:name=".chickenloverActivity" android:exported="true" />
         <activity android:name=".smashburgerActivity" android:exported="true" />
         <activity android:name=".cartaActivity" android:exported="false" />
@@ -47,7 +48,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="API-KEY" />
-
     </application>
 
 </manifest>
