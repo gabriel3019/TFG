@@ -30,6 +30,7 @@
         </activity>
 
         <!-- Resto de actividades -->
+        <activity android:name=".postresActivity" android:exported="true" />
         <activity android:name=".saladActivity" android:exported="true" />
         <activity android:name=".chickenloverActivity" android:exported="true" />
         <activity android:name=".smashburgerActivity" android:exported="true" />
