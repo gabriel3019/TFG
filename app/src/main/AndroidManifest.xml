@@ -76,7 +76,9 @@
             android:exported="true" />
         <activity
             android:name=".menuActivity"
-            android:exported="true" /> <!-- API Key de Google Maps -->
+            android:exported="true" />
+
+        <!-- API Key de Google Maps -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="API-KEY" />
