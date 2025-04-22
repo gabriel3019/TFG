@@ -1,33 +1,36 @@
 package com.example.tfg;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class menuActivity extends AppCompatActivity {
 
-    private ImageButton btnPerfil;
+    private ImageView Perfil;
 
     private Button btnCarta;
     private Button btnRestaurantes;
 
     private Button btnBebidas;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        btnPerfil = findViewById(R.id.Perfil);
+        Perfil = findViewById(R.id.perfil);
         btnCarta = findViewById(R.id.btnCarta);
         btnRestaurantes = findViewById(R.id.btnRestaurantes);
         btnBebidas = findViewById(R.id.btnBebidas);
 
 
-        btnPerfil.setOnClickListener(v -> {
+        Perfil.setOnClickListener(v -> {
             Intent intent = new Intent(menuActivity.this, perfilActivity.class);
             startActivity(intent);
         });
