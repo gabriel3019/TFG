@@ -17,7 +17,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Tfg"
         tools:targetApi="31">
+        <activity
+            android:name=".alergenosActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <!-- Actividad principal: login -->
         <activity
             android:name=".loginActivity"
@@ -31,7 +39,7 @@
         </activity> <!-- Resto de actividades -->
         <activity
             android:name=".parapequesActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".entrantesActivity"
             android:exported="true" />
@@ -76,9 +84,7 @@
             android:exported="true" />
         <activity
             android:name=".menuActivity"
-            android:exported="true" />
-
-        <!-- API Key de Google Maps -->
+            android:exported="true" /> <!-- API Key de Google Maps -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="API-KEY" />
