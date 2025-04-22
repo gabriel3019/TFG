@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class activity_Hamburguesas extends AppCompatActivity {
 
     private ImageButton buttonHome;
+    private ImageView flecha;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -20,12 +22,18 @@ public class activity_Hamburguesas extends AppCompatActivity {
         setContentView(R.layout.activity_hamburguesas);
 
         buttonHome = findViewById(R.id.buttonHome);
+        flecha = findViewById(R.id.flecha);
 
         // Establecer el OnClickListener para el botón
         buttonHome.setOnClickListener(v -> {
             // Crear un Intent para ir a la actividad del menú
             Intent intent = new Intent(activity_Hamburguesas.this, menuActivity.class); // Asegúrate de que el nombre de la actividad sea correcto
             startActivity(intent); // Iniciar la actividad
+        });
+
+        flecha.setOnClickListener(v -> {
+            Intent intent = new Intent(activity_Hamburguesas.this, cartaActivity.class);
+            startActivity(intent);
         });
 
     }

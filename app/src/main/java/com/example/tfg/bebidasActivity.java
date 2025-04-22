@@ -3,6 +3,7 @@ package com.example.tfg;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +12,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class bebidasActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,13 @@ public class bebidasActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        ImageView flecha = findViewById(R.id.flecha);
+        flecha.setOnClickListener(v -> {
+            Intent intent = new Intent(bebidasActivity.this, cartaActivity.class);
+            startActivity(intent);
+        });
+
 
         // 🔽 Aquí se pone la funcionalidad del botón
         ImageButton btnHome = findViewById(R.id.buttonHome);

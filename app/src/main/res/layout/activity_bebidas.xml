@@ -207,4 +207,16 @@
         app:srcCompat="@drawable/cervezas"
         android:scaleType="fitXY"/>
 
+    <ImageView
+        android:id="@+id/flecha"
+        android:layout_width="39dp"
+        android:layout_height="45dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_HomeLeft"
+        app:layout_constraintHorizontal_bias="0.604"
+        app:layout_constraintStart_toStartOf="@+id/guideline_LogoRight"
+        app:layout_constraintTop_toTopOf="@+id/guideline_HomeTop"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/flecha_casa" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
