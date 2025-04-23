@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="alergenos_array">
+        <item>Gluten</item>
+        <item>Lácteos</item>
+        <item>Huevo</item>
+        <!-- añade más si quieres -->
+    </string-array>
+</resources>
