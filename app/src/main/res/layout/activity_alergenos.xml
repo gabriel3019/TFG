@@ -10,6 +10,7 @@
     tools:context=".alergenosActivity">
 
     <!-- Elementos existentes (se mantienen igual) -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/MargenTop"
         android:layout_width="0dp"
@@ -20,7 +21,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
         <TextView
             android:id="@+id/textView"
@@ -83,6 +84,7 @@
 
     <!-- Nuevos elementos para el filtrado de alérgenos -->
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
@@ -188,6 +190,22 @@
                 android:layout_marginBottom="8dp"/>
 
             <CheckBox
+                android:id="@+id/cbMoluscos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Moluscos (calamares, mejillones)"
+                android:textColor="@color/white"
+                android:layout_marginBottom="8dp"/>
+
+            <CheckBox
+                android:id="@+id/cbAltramuces"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Altramuces"
+                android:textColor="@color/white"
+                android:layout_marginBottom="8dp"/>
+
+            <CheckBox
                 android:id="@+id/cbSesamo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -211,8 +229,30 @@
                 android:background="@color/black"
                 android:textColor="@color/white"
                 android:textStyle="bold"/>
+
+            <Button
+                android:id="@+id/btnVolverFiltros"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Volver a filtros"
+                android:layout_margin="8dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scrollView"/>
+
         </LinearLayout>
     </ScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewResultados"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/guideline_HomeTop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView"/>
 
     <!-- Directrices restantes (se mantienen igual) -->
     <androidx.constraintlayout.widget.Guideline
