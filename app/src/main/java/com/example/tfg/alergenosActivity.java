@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -33,10 +34,14 @@ public class alergenosActivity extends AppCompatActivity {
     private CheckBox cbLacteos, cbFrutosSecos, cbApio, cbMostaza, cbSesamo, cbSulfitos;
     private ScrollView scrollView;
 
+    private ImageView flecha;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alergenos);
+
+        flecha = findViewById(R.id.flecha);
 
         // Inicializar vistas
         inicializarVistas();
@@ -60,6 +65,8 @@ public class alergenosActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+
+
     }
 
     private void inicializarVistas() {
