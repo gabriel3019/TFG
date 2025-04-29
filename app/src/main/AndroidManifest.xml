@@ -18,6 +18,9 @@
         android:theme="@style/Theme.Tfg"
         tools:targetApi="31">
         <activity
+            android:name=".ReservasActivity"
+            android:exported="false" />
+        <activity
             android:name=".DetalleEntranteActivity"
             android:exported="false" />
         <activity
