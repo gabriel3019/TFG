@@ -18,9 +18,11 @@
         android:theme="@style/Theme.Tfg"
         tools:targetApi="31">
         <activity
-            android:name=".alergenosActivity"
+            android:name=".DetalleEntranteActivity"
             android:exported="false" />
-        <!-- Actividad principal: login -->
+        <activity
+            android:name=".alergenosActivity"
+            android:exported="false" /> <!-- Actividad principal: login -->
         <activity
             android:name=".loginActivity"
             android:exported="true"
