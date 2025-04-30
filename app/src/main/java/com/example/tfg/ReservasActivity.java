@@ -88,7 +88,7 @@ public class ReservasActivity extends AppCompatActivity {
                 R.layout.spinner_item, // Layout personalizado
                 provincias
         );
-        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerProvincias.setAdapter(adapter);
 
         // Manejar selección del usuario

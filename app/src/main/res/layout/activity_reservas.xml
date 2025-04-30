@@ -124,7 +124,7 @@
 
     <Spinner
         android:id="@+id/spinnerProvincias"
-        style="@style/Widget.Goiko.Spinner.Dark"
+        style="@style/Widget.Goiko.Spinner"
         android:layout_width="340dp"
         android:layout_height="25dp"
         android:spinnerMode="dropdown"
@@ -136,7 +136,7 @@
 
     <Spinner
         android:id="@+id/spinnerRestaurantes"
-        style="@style/Widget.Goiko.Spinner.Dark"
+        style="@style/Widget.Goiko.Spinner"
         android:layout_width="340dp"
         android:layout_height="25dp"
         android:spinnerMode="dropdown"

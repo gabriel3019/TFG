@@ -4,11 +4,8 @@
         <!-- ... tus atributos ... -->
     </style>
 
-    <!-- Nuevo estilo para Spinner oscuro -->
-    <style name="Widget.Goiko.Spinner.Dark" parent="Widget.AppCompat.Spinner">
-        <!-- Fondo del botón antes de desplegar -->
-        <item name="android:background">@android:color/black</item>
-        <!-- Fondo de la lista desplegable -->
-        <item name="android:popupBackground">@android:color/black</item>
+    <style name="Widget.Goiko.Spinner" parent="Widget.AppCompat.Spinner">
+        <item name="android:background">#FFFFFF</item>
+        <item name="android:popupBackground">#FFFFFF</item>
     </style>
 </resources>

@@ -86,7 +86,7 @@
             android:exported="true" /> <!-- API Key de Google Maps -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDi9L5LyapmFz856mVgBZHwgnIyyV-8wC8" />
+            android:value="API-KEY" />
     </application>
 
 </manifest>
