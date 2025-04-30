@@ -4,15 +4,17 @@ public class Restaurante {
 
     private String name;
     private String address;
+    private String province;
     private int telephone;
     private double lat;
     private double lng;
     private double distance;
 
     // Constructor
-    public Restaurante(String name, String address, int telephone, double lat, double lng, double distance) {
+    public Restaurante(String name, String address, String province, int telephone, double lat, double lng, double distance) {
         this.name = name;
         this.address = address;
+        this.province = province;
         this.telephone = telephone;
         this.lat = lat;
         this.lng = lng;
@@ -35,6 +37,14 @@ public class Restaurante {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
     }
 
     public int getTelephone() {
@@ -78,6 +88,7 @@ public class Restaurante {
         return "Restaurante{" +
                 "nombre='" + name + '\'' +
                 ", direccion='" + address + '\'' +
+                ", provincia='" + province + '\'' +
                 ", telefono=" + telephone +
                 ", latitud=" + lat +
                 ", longitud=" + lng +

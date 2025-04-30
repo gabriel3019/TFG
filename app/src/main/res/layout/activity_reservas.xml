@@ -123,16 +123,16 @@
         app:srcCompat="@drawable/logo_home" />
 
     <Spinner
-        android:id="@+id/spinnerComunidades"
+        android:id="@+id/spinnerProvincias"
         style="@style/Widget.Goiko.Spinner.Dark"
         android:layout_width="340dp"
         android:layout_height="25dp"
         android:spinnerMode="dropdown"
         android:textAlignment="textStart"
-        app:layout_constraintBottom_toTopOf="@+id/guidelineComunidad"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineProvincia"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guidelineComunidad" />
+        app:layout_constraintTop_toTopOf="@+id/guidelineProvincia" />
 
     <Spinner
         android:id="@+id/spinnerRestaurantes"
@@ -147,7 +147,7 @@
         app:layout_constraintTop_toTopOf="@+id/guidelineRestaurante" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineComunidad"
+        android:id="@+id/guidelineProvincia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

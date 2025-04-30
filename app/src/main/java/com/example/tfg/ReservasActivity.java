@@ -14,8 +14,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class ReservasActivity extends AppCompatActivity {
 
-    private Spinner spinnerComunidades;
-    private String[] comunidades;
+    private Spinner spinnerProvincias;
+    private String[] provincias;
+    private String provinciaSeleccionada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,25 +32,25 @@ public class ReservasActivity extends AppCompatActivity {
         });
 
         // Obtener referencia del Spinner
-        spinnerComunidades = findViewById(R.id.spinnerComunidades);
+        spinnerProvincias = findViewById(R.id.spinnerProvincias);
 
         // Cargar el array de comunidades desde strings.xml
-        comunidades = getResources().getStringArray(R.array.comunidades);
+        provincias = getResources().getStringArray(R.array.provincias);
 
         // Configurar el adaptador
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this,
                 R.layout.spinner_item, // Layout personalizado
-                comunidades
+                provincias
         );
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerComunidades.setAdapter(adapter);
+        spinnerProvincias.setAdapter(adapter);
 
         // Manejar selección del usuario
-        spinnerComunidades.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerProvincias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String comunidadSeleccionada = comunidades[position];
+                provinciaSeleccionada = provincias[position];
                 // Aquí puedes usar el valor seleccionado
             }
 

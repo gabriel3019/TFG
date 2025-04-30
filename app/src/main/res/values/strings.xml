@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">GOIKO</string>
     <string name="describir_perfil">Ir al perfil del usuario</string> <!-- Descripción accesible para el botón del perfil -->
-    <string-array name="comunidades">
+    <string-array name="provincias">
         <item>A Coruña</item>
         <item>Álava</item>
         <item>Albacete</item>
