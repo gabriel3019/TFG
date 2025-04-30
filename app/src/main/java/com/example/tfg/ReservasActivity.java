@@ -145,42 +145,42 @@ public class ReservasActivity extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Restaurantes")
                 .whereEqualTo("provincia", provinciaSeleccionada).get().addOnCompleteListener(task -> {
-            if (task.isSuccessful() && ubicacionActual != null) {
-                listaRestaurantes.clear();
-                for (DocumentSnapshot doc : task.getResult()) {
-                    try {
-                        String name = doc.getString("nombre");
-                        String address = doc.getString("direccion");
-                        String province = doc.getString("provincia");
-                        double telephone = doc.getDouble("telefono");
-                        double latitude = doc.getDouble("latitud");
-                        double longitude = doc.getDouble("longitud");
+                    if (task.isSuccessful() && ubicacionActual != null) {
+                        listaRestaurantes.clear();
+                        for (DocumentSnapshot doc : task.getResult()) {
+                            try {
+                                String name = doc.getString("nombre");
+                                String address = doc.getString("direccion");
+                                String province = doc.getString("provincia");
+                                double telephone = doc.getDouble("telefono");
+                                double latitude = doc.getDouble("latitud");
+                                double longitude = doc.getDouble("longitud");
 
-                        int telephoneInt = (int) telephone;
+                                int telephoneInt = (int) telephone;
 
-                        // Verificación null para coordenadas
-                        if (latitude != 0.0 && longitude != 0.0) {
-                            double distance = calcularDistanciaKM(
-                                    ubicacionActual.getLatitude(),
-                                    ubicacionActual.getLongitude(),
-                                    latitude,
-                                    longitude
-                            );
-                            listaRestaurantes.add(new Restaurante(name, address, province, telephoneInt, latitude, longitude, distance));
+                                // Verificación null para coordenadas
+                                if (latitude != 0.0 && longitude != 0.0) {
+                                    double distance = calcularDistanciaKM(
+                                            ubicacionActual.getLatitude(),
+                                            ubicacionActual.getLongitude(),
+                                            latitude,
+                                            longitude
+                                    );
+                                    listaRestaurantes.add(new Restaurante(name, address, province, telephoneInt, latitude, longitude, distance));
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-                Collections.sort(listaRestaurantes, Comparator.comparingDouble(Restaurante::getDistance));
-                for (Restaurante restaurante : listaRestaurantes) {
-                    Log.d("Lista", restaurante.getName());
-                }
+                        Collections.sort(listaRestaurantes, Comparator.comparingDouble(Restaurante::getDistance));
+                        for (Restaurante restaurante : listaRestaurantes) {
+                            Log.d("Lista", restaurante.getName());
+                        }
 
-            } else {
-                Toast.makeText(this, "Error cargando restaurantes", Toast.LENGTH_SHORT).show();
-            }
-        });
+                    } else {
+                        Toast.makeText(this, "Error cargando restaurantes", Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private double calcularDistanciaKM(double lat1, double lng1, double lat2, double lng2) {
