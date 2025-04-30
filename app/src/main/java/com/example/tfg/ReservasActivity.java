@@ -95,13 +95,16 @@ public class ReservasActivity extends AppCompatActivity {
         spinnerProvincias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                provinciaSeleccionada = provincias[position];
-                cargarRestaurantes(provinciaSeleccionada);
+                if (position > 0) {
+                    provinciaSeleccionada = provincias[position];
+                    cargarRestaurantes(provinciaSeleccionada);
+                } else {
+                    listaRestaurantes.clear();
+                }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                // Acción cuando no se selecciona nada
             }
         });
     }
