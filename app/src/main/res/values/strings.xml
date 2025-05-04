@@ -42,4 +42,9 @@
         <item>Vizcaya</item>
         <item>Zaragoza</item>
     </string-array>
+
+    <string-array name="restaurantes">
+        <item>Selecciona un restaurante</item>
+    </string-array>
+
 </resources>
