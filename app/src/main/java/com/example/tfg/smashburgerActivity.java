@@ -14,6 +14,8 @@ public class smashburgerActivity extends AppCompatActivity {
     private ImageButton buttonHome;
     private ImageView flecha;
 
+    private ImageView hattrick, mas_s_mash, don_vito, smashic;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,11 @@ public class smashburgerActivity extends AppCompatActivity {
 
         buttonHome = findViewById(R.id.buttonHome);
         flecha = findViewById(R.id.flecha);
+
+        hattrick = findViewById(R.id.hattrick);
+        mas_s_mash = findViewById(R.id.mas_s_mash);
+        don_vito = findViewById(R.id.don_vito);
+        smashic = findViewById(R.id.smashic);
 
         // Establecer el OnClickListener para el botón
         buttonHome.setOnClickListener(v -> {
@@ -36,6 +43,21 @@ public class smashburgerActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // Listeners de productos
+        hattrick.setOnClickListener(v -> abrirDetalleProducto("wSkdMvTm95ogliUA08xB"));
+        mas_s_mash.setOnClickListener(v -> abrirDetalleProducto("dPmu9s7t38uud7g6T3H8"));
+        don_vito.setOnClickListener(v -> abrirDetalleProducto("i7ffBs4AXuJ2YjnRLWGa"));
+        smashic.setOnClickListener(v -> abrirDetalleProducto("qWwVc5g6lwheydD0IfeF"));
+    }
+
+    // Función que abre el detalle del producto
+    private void abrirDetalleProducto(String productoId) {
+        Intent intent = new Intent(smashburgerActivity.this, detalleSmashBurgers.class);
+        intent.putExtra("productoId", productoId);
+        startActivity(intent);
     }
 
 }
+
+
+

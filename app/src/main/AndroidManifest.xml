@@ -18,6 +18,9 @@
         android:theme="@style/Theme.Tfg"
         tools:targetApi="31">
         <activity
+            android:name=".detalleSmashBurgers"
+            android:exported="false" />
+        <activity
             android:name=".detallesHamburguesasActivity"
             android:exported="false" />
         <activity
