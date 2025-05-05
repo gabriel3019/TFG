@@ -17,6 +17,8 @@ public class parapequesActivity extends AppCompatActivity {
     private ImageButton buttonHome;
     private ImageView flecha;
 
+    private ImageView goiko_kids_de_carne, goiko_kids_de_pollo;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,9 @@ public class parapequesActivity extends AppCompatActivity {
 
         buttonHome = findViewById(R.id.buttonHome);
         flecha = findViewById(R.id.flecha);
+
+        goiko_kids_de_carne = findViewById(R.id.goiko_kids_de_carne);
+        goiko_kids_de_pollo = findViewById(R.id.goiko_kids_de_pollo);
 
         // Establecer el OnClickListener para el botón
         buttonHome.setOnClickListener(v -> {
@@ -39,6 +44,15 @@ public class parapequesActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        goiko_kids_de_carne.setOnClickListener(v -> abrirDetalleProducto("u1JNFZQpsS6qyl0Ao8li"));
+        goiko_kids_de_pollo.setOnClickListener(v -> abrirDetalleProducto("SXQE3RtwPPKc2A1YfSml"));
+
+    }
+
+    private void abrirDetalleProducto (String productoId){
+        Intent intent = new Intent(parapequesActivity.this, detalleParaPeques.class);
+        intent.putExtra("productoId", productoId);
+        startActivity(intent);
     }
 
 }
