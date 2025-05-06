@@ -1,6 +1,7 @@
 package com.example.tfg;
 
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,6 +21,7 @@ public class DetalleEntranteActivity extends AppCompatActivity {
     private TextView nombreProducto, descripcionProducto, precioProducto;
     private Button botonComprar;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

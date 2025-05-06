@@ -17,6 +17,8 @@ public class saladActivity extends AppCompatActivity {
     private ImageButton buttonHome;
     private ImageView flecha;
 
+    private ImageView green_day, ave_cesar;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,9 @@ public class saladActivity extends AppCompatActivity {
 
         buttonHome = findViewById(R.id.buttonHome);
         flecha = findViewById(R.id.flecha);
+
+        green_day = findViewById(R.id.green_day);
+        ave_cesar = findViewById(R.id.ave_cesar);
 
         // Establecer el OnClickListener para el botón
         buttonHome.setOnClickListener(v -> {
@@ -39,6 +44,14 @@ public class saladActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        green_day.setOnClickListener(v -> abrirDetalleProducto("kFbKh9mOJdje7OjDjxgh"));
+        ave_cesar.setOnClickListener(v -> abrirDetalleProducto("h4SKKUrDwMYzEePCkPRI"));
+    }
+
+    private void abrirDetalleProducto (String productoId){
+        Intent intent = new Intent(saladActivity.this, detalleSalad.class);
+        intent.putExtra("productoId", productoId);
+        startActivity(intent);
     }
 
 }

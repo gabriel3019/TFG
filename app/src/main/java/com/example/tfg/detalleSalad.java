@@ -16,19 +16,16 @@ import androidx.core.view.WindowInsetsCompat;
 import com.bumptech.glide.Glide;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class detalleSmashBurgers extends AppCompatActivity {
-
+public class detalleSalad extends AppCompatActivity {
     private ImageView imagenProducto, flechaAtras;
-
     private TextView nombreProducto, descripcionProducto, precioProducto;
-
     private Button botonComprar;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalle_smash_burgers);
+        setContentView(R.layout.activity_detalle_salad);
 
         imagenProducto = findViewById(R.id.imagenProducto);
         nombreProducto = findViewById(R.id.nombreProducto);
@@ -39,14 +36,8 @@ public class detalleSmashBurgers extends AppCompatActivity {
 
         String productoId = getIntent().getStringExtra("productoId");
 
-        if (productoId == null) {
-            Toast.makeText(this, "Error: no se recibió el ID del producto", Toast.LENGTH_LONG).show();
-            finish(); // Cierra la actividad para evitar más errores
-            return;
-        }
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("smashburgers").document(productoId).get().addOnSuccessListener(documentSnapshot -> {
+        db.collection("salads").document(productoId).get().addOnSuccessListener(documentSnapshot -> {
             if (documentSnapshot.exists()) {
                 String nombre = documentSnapshot.getString("nombre");
                 String descripcion = documentSnapshot.getString("descripcion");
@@ -58,17 +49,14 @@ public class detalleSmashBurgers extends AppCompatActivity {
                 precioProducto.setText("Precio: " + precio + "€");
 
                 Glide.with(this).load(imagenUrl).into(imagenProducto);
-            } else {
-                Toast.makeText(this, "Producto no encontrado en la base de datos", Toast.LENGTH_LONG).show();
             }
-        }).addOnFailureListener(e -> {
-            Toast.makeText(this, "Error al cargar los datos: " + e.getMessage(), Toast.LENGTH_LONG).show();
         });
 
         flechaAtras.setOnClickListener(v -> {
             Toast.makeText(this, "Clic detectado", Toast.LENGTH_SHORT).show();
             finish();
         });
+
         botonComprar.setOnClickListener(v -> {
             Toast.makeText(this, "Producto añadido a la compra", Toast.LENGTH_SHORT).show();
         });
