@@ -45,6 +45,7 @@ public class ReservasActivity extends AppCompatActivity {
     private String restauranteSeleccionado;
     private String personasSeleccionada;
     private String horaSeleccionada;
+    private ImageButton btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,13 @@ public class ReservasActivity extends AppCompatActivity {
             Insets sys = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(sys.left, sys.top, sys.right, sys.bottom);
             return insets;
+        });
+
+        btnHome = findViewById(R.id.buttonHome);
+
+        btnHome.setOnClickListener(v -> {
+            Intent intent = new Intent(ReservasActivity.this, menuActivity.class);
+            startActivity(intent);
         });
 
         // Ubicación FAKE para testing sin GPS real
