@@ -146,6 +146,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guidelineRestaurante" />
 
+    <Spinner
+        android:id="@+id/spinnerHora"
+        style="@style/Widget.Goiko.Spinner"
+        android:layout_width="340dp"
+        android:layout_height="25dp"
+        android:spinnerMode="dropdown"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHora"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHora" />
+
+    <Spinner
+        android:id="@+id/spinnerPersonas"
+        style="@style/Widget.Goiko.Spinner"
+        android:layout_width="340dp"
+        android:layout_height="25dp"
+        android:spinnerMode="dropdown"
+        android:textAlignment="textStart"
+        app:layout_constraintBottom_toTopOf="@+id/guidelinePersonas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelinePersonas" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineProvincia"
         android:layout_width="wrap_content"

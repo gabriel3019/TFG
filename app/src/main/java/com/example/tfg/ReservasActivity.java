@@ -36,11 +36,15 @@ public class ReservasActivity extends AppCompatActivity {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private FusedLocationProviderClient fusedLocationClient;
     private Location ubicacionActual;
-    private Spinner spinnerProvincias, spinnerRestaurantes;
+    private Spinner spinnerProvincias, spinnerRestaurantes, spinnerHoras, spinnerPersonas;
     private ArrayList<Restaurante> listaRestaurantes = new ArrayList<>();
     private String[] provincias;
+    private String[] personas;
+    private String[] horas;
     private String provinciaSeleccionada;
     private String restauranteSeleccionado;
+    private String personasSeleccionada;
+    private String horaSeleccionada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +63,10 @@ public class ReservasActivity extends AppCompatActivity {
         ubicacionFake.setLongitude(-3.63169);
 
         // Referencias UI
-        spinnerProvincias   = findViewById(R.id.spinnerProvincias);
+        spinnerProvincias = findViewById(R.id.spinnerProvincias);
         spinnerRestaurantes = findViewById(R.id.spinnerRestaurantes);
+        spinnerHoras = findViewById(R.id.spinnerHora);
+        spinnerPersonas = findViewById(R.id.spinnerPersonas);
 
         // Adapter de provincias
         provincias = getResources().getStringArray(R.array.provincias);
@@ -72,9 +78,30 @@ public class ReservasActivity extends AppCompatActivity {
         adapterProv.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerProvincias.setAdapter(adapterProv);
 
+        // Adapter de personas
+        personas = getResources().getStringArray(R.array.personas);
+        ArrayAdapter<String> adapterPers = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_item,
+                personas
+        );
+        adapterPers.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerPersonas.setAdapter(adapterPers);
+
+        // Adapter de horas
+        horas = getResources().getStringArray(R.array.horas);
+        ArrayAdapter<String> adapterHoras = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_item,
+                horas
+        );
+        adapterHoras.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerHoras.setAdapter(adapterHoras);
+
         // Al seleccionar provincia, recarga restaurantes
         spinnerProvincias.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 provinciaSeleccionada = provincias[pos];
                 if (pos > 0) {
                     cargarRestaurantes(provinciaSeleccionada, ubicacionFake);
@@ -91,7 +118,36 @@ public class ReservasActivity extends AppCompatActivity {
                     spinnerRestaurantes.setAdapter(a);
                 }
             }
-            @Override public void onNothingSelected(AdapterView<?> parent) { }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        spinnerPersonas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                if (pos > 0) {
+                    personasSeleccionada = personas[pos];
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        spinnerHoras.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                if (pos > 0) {
+                    horaSeleccionada = horas[pos];
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
 
         // Inicializar ubicación real
@@ -120,7 +176,8 @@ public class ReservasActivity extends AppCompatActivity {
                 != PackageManager.PERMISSION_GRANTED) return;
         fusedLocationClient.getLastLocation()
                 .addOnSuccessListener(this, new OnSuccessListener<Location>() {
-                    @Override public void onSuccess(Location loc) {
+                    @Override
+                    public void onSuccess(Location loc) {
                         if (loc != null) ubicacionActual = loc;
                     }
                 });
@@ -138,9 +195,9 @@ public class ReservasActivity extends AppCompatActivity {
                         for (DocumentSnapshot doc : task.getResult()) {
                             String name = doc.getString("nombre");
                             String addr = doc.getString("direccion");
-                            double tel  = doc.getDouble("telefono");
-                            double lat  = doc.getDouble("latitud");
-                            double lng  = doc.getDouble("longitud");
+                            double tel = doc.getDouble("telefono");
+                            double lat = doc.getDouble("latitud");
+                            double lng = doc.getDouble("longitud");
                             if (lat != 0.0 && lng != 0.0) {
                                 Location origen = (ubicacionActual != null) ? ubicacionActual : ubicacionFake;
                                 double dist = calcularDistanciaKM(
@@ -149,7 +206,7 @@ public class ReservasActivity extends AppCompatActivity {
                                         lat, lng
                                 );
                                 listaRestaurantes.add(
-                                        new Restaurante(name, addr, provincia, (int)tel, lat, lng, dist)
+                                        new Restaurante(name, addr, provincia, (int) tel, lat, lng, dist)
                                 );
                             }
                         }
@@ -170,10 +227,14 @@ public class ReservasActivity extends AppCompatActivity {
                         spinnerRestaurantes.setAdapter(adapterRest);
 
                         spinnerRestaurantes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                            @Override public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                                 restauranteSeleccionado = parent.getItemAtPosition(pos).toString();
                             }
-                            @Override public void onNothingSelected(AdapterView<?> parent) { }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
+                            }
                         });
                     } else {
                         Toast.makeText(this,
@@ -185,8 +246,10 @@ public class ReservasActivity extends AppCompatActivity {
     private double calcularDistanciaKM(
             double lat1, double lng1, double lat2, double lng2) {
         Location a = new Location("A"), b = new Location("B");
-        a.setLatitude(lat1); a.setLongitude(lng1);
-        b.setLatitude(lat2); b.setLongitude(lng2);
+        a.setLatitude(lat1);
+        a.setLongitude(lng1);
+        b.setLatitude(lat2);
+        b.setLongitude(lng2);
         return a.distanceTo(b) / 1000;
     }
 }
