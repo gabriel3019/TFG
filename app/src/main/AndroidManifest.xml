@@ -54,17 +54,7 @@
             android:exported="false" />
         <activity
             android:name=".alergenosActivity"
-            android:exported="false" /> <!-- Actividad principal: login -->
-        <activity
-            android:name=".loginActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Tfg.Splash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- Resto de actividades -->
+            android:exported="false" />
         <activity
             android:name=".parapequesActivity"
             android:exported="true" />
