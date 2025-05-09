@@ -30,7 +30,7 @@ public class perfilActivity extends AppCompatActivity {
         // Referencias a los EditText del perfil
         etNombre = findViewById(R.id.nombre);
         etApellidos = findViewById(R.id.apellidos);
-        etCorreo = findViewById(R.id.correo_electronico);
+        etCorreo = findViewById(R.id.correo);
         btnMenu = findViewById(R.id.buttonHome);
 
         // Establecer el OnClickListener para el botón

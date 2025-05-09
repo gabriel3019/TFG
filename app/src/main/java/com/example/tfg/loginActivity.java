@@ -1,48 +1,89 @@
 package com.example.tfg;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
 import androidx.core.splashscreen.SplashScreen;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.auth.FirebaseAuth;
 
 public class loginActivity extends AppCompatActivity {
 
-    private EditText etCorreo, etContrasena, registrarse;
+    private EditText etCorreo, etContrasena;
+    private Button registrarse;
     private Button IniciarSesion;
     private FirebaseAuth mAuth;
+    private CheckBox checkRecordarme;
+    private boolean isPasswordVisible = false;
 
+
+
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         SplashScreen.installSplashScreen(this);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Inicializar Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
-        // Referencias a los elementos del layout
-        etCorreo = findViewById(R.id.correo_electronico);
+        etCorreo = findViewById(R.id.correo);
         etContrasena = findViewById(R.id.contrasena);
         IniciarSesion = findViewById(R.id.btnIniciarSesion);
         registrarse = findViewById(R.id.registrarse);
+        checkRecordarme = findViewById(R.id.checkRecordarme);
 
-        // Establecer el comportamiento del botón de iniciar sesión
+        // Cargar correo y contraseña guardados
+        SharedPreferences preferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        boolean recordar = preferences.getBoolean("recordar", false);
+
+        if (recordar) {
+            etCorreo.setText(preferences.getString("correo", ""));
+            etContrasena.setText(preferences.getString("contrasena", ""));
+            checkRecordarme.setChecked(true);
+        }
+
+        // Mostrar/Ocultar contraseña con icono de ojo
+        ImageView ojoContraseña = findViewById(R.id.ojoContraseña);
+
+        ojoContraseña.setOnClickListener(v -> {
+            isPasswordVisible = !isPasswordVisible;
+            if (isPasswordVisible) {
+                etContrasena.setInputType(android.text.InputType.TYPE_CLASS_TEXT |
+                        android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                ojoContraseña.setImageResource(R.drawable.eye_open);
+            } else {
+                etContrasena.setInputType(android.text.InputType.TYPE_CLASS_TEXT |
+                        android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                ojoContraseña.setImageResource(R.drawable.eye_closed);
+            }
+            etContrasena.setSelection(etContrasena.getText().length());
+        });
+
+
+
+
+
+
         IniciarSesion.setOnClickListener(v -> iniciarSesion());
 
-        registrarse.setOnClickListener( v -> {
+        registrarse.setOnClickListener(v -> {
             Intent intent = new Intent(loginActivity.this, registroActivity.class);
             startActivity(intent);
         });
     }
+
 
     @Override
     protected void onStart() {
@@ -67,6 +108,20 @@ public class loginActivity extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(correo, contrasena)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
+                        // Guardar correo y contraseña en SharedPreferences
+                        SharedPreferences preferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = preferences.edit();
+
+                        if (checkRecordarme.isChecked()) {
+                            editor.putString("correo", correo);
+                            editor.putString("contrasena", contrasena);
+                            editor.putBoolean("recordar", true);
+                        } else {
+                            editor.clear(); // Borra todo si no está marcado
+                        }
+                        editor.apply();
+
+                        // Ir al menú
                         startActivity(new Intent(loginActivity.this, menuActivity.class));
                         finish(); // Cierra loginActivity
                     } else {

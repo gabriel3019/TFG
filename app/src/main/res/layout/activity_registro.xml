@@ -16,9 +16,10 @@
         android:layout_height="146dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/logo_goiko" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -44,12 +45,17 @@
 
     <EditText
         android:id="@+id/nombre"
-        android:layout_width="215dp"
+        android:layout_width="338dp"
         android:layout_height="48dp"
-        android:background="@color/white"
+        android:background="@drawable/rounded_edittext"
         android:ems="10"
-        android:hint="Tu nombre"
-        android:inputType="text"
+        android:fontFamily="sans-serif"
+        android:hint="Nombre"
+        android:inputType="textCapWords|text"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintHorizontal_bias="0.489"
@@ -65,16 +71,23 @@
 
     <EditText
         android:id="@+id/apellidos"
-        android:layout_width="215dp"
+        android:layout_width="338dp"
         android:layout_height="48dp"
-        android:background="@color/white"
+        android:background="@drawable/rounded_edittext"
         android:ems="10"
-        android:hint="Tus apellidos"
-        android:inputType="text"
+        android:fontFamily="sans-serif"
+        android:hint="Apellidos"
+        android:inputType="textCapWords|text"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.455"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintTop_toTopOf="@+id/guideline4"
+        app:layout_constraintVertical_bias="0.625" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
@@ -84,13 +97,17 @@
         app:layout_constraintGuide_percent="0.39" />
 
     <EditText
-        android:id="@+id/correo_electronico"
-        android:layout_width="215dp"
+        android:id="@+id/correo"
+        android:layout_width="338dp"
         android:layout_height="48dp"
-        android:background="@color/white"
-        android:ems="10"
-        android:hint="Tu correo electronico"
-        android:inputType="text"
+        android:background="@drawable/rounded_edittext"
+        android:fontFamily="sans-serif"
+        android:hint="Correo electrónico"
+        android:inputType="textEmailAddress|textNoSuggestions"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -110,18 +127,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/contrasena"
-        android:layout_width="215dp"
+    <FrameLayout
+        android:id="@+id/contenedorContrasena"
+        android:layout_width="338dp"
         android:layout_height="48dp"
-        android:background="@color/white"
-        android:ems="10"
-        android:hint="Tu contraseña"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/guideline7"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline6" />
+        app:layout_constraintTop_toBottomOf="@+id/correo">
+
+        <EditText
+            android:id="@+id/contrasena"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_edittext"
+            android:fontFamily="sans-serif"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:paddingStart="12dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="40dp"
+            android:paddingBottom="10dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/ojoContraseña"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="Mostrar/Ocultar contraseña"
+            android:src="@drawable/eye_closed" />
+    </FrameLayout>
+
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"
@@ -130,18 +170,40 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.57" />
 
-    <EditText
-        android:id="@+id/repetir_contrasena"
-        android:layout_width="215dp"
+    <FrameLayout
+        android:id="@+id/contenedorRepetirContrasena"
+        android:layout_width="338dp"
         android:layout_height="48dp"
-        android:background="@color/white"
-        android:ems="10"
-        android:hint="Repite la contrasena"
-        android:inputType="text"
         app:layout_constraintBottom_toTopOf="@+id/guideline8"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline7" />
+        app:layout_constraintTop_toTopOf="@+id/guideline7">
+
+        <EditText
+            android:id="@+id/repetir_contrasena"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_edittext"
+            android:fontFamily="sans-serif"
+            android:hint="Repita la contraseña"
+            android:inputType="textPassword"
+            android:paddingStart="12dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="40dp"
+            android:paddingBottom="10dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/ojoRepetirContrasena"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="Mostrar/Ocultar contraseña repetida"
+            android:src="@drawable/eye_closed" />
+    </FrameLayout>
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline8"
@@ -152,15 +214,22 @@
 
     <EditText
         android:id="@+id/numero_telefono"
-        android:layout_width="215dp"
+        android:layout_width="338dp"
         android:layout_height="48dp"
-        android:background="@color/white"
-        android:ems="10"
-        android:hint="Tu numero de telefono"
+        android:background="@drawable/rounded_edittext"
+        android:fontFamily="sans-serif"
+        android:hint="Teléfono"
+        android:inputType="phone"
+        android:maxLength="9"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline9"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/guideline8" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
@@ -171,16 +240,22 @@
 
     <EditText
         android:id="@+id/fecha_nacimiento"
-        android:layout_width="215dp"
+        android:layout_width="338dp"
         android:layout_height="48dp"
-        android:background="@color/white"
-        android:ems="10"
-        android:hint="Tu fecha de nacimiento"
-        android:inputType="date"
+        android:background="@drawable/rounded_edittext"
+        android:clickable="true"
+        android:focusable="false"
+        android:fontFamily="sans-serif"
+        android:hint="Fecha de nacimiento (dd/mm/aaaa)"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/guideline9" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline10"
@@ -191,7 +266,7 @@
 
     <Button
         android:id="@+id/btnRegistrarse"
-        android:layout_width="142dp"
+        android:layout_width="338dp"
         android:layout_height="48dp"
         android:backgroundTint="#ee2737"
         android:text="Registrarse"
@@ -207,17 +282,17 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.9110807" />
 
-    <EditText
-        android:id="@+id/Iniciar_sesion"
-        android:layout_width="257dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Ya tienes cuenta? Iniciar sesion"
-        android:textColor="@color/white"
+    <Button
+        android:id="@+id/btnIrALogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/black"
+        android:text="¿Ya tienes cuenta? Iniciar sesión"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline11" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline11" /> <!-- Ajusta esta distancia como tú prefieras -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

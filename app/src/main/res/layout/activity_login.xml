@@ -18,7 +18,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline17"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline16" />
+        app:layout_constraintTop_toTopOf="@+id/guideline15" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -31,31 +31,61 @@
         app:srcCompat="@drawable/logo_goiko" />
 
     <EditText
-        android:id="@+id/correo_electronico"
+        android:id="@+id/correo"
         android:layout_width="215dp"
         android:layout_height="48dp"
         android:background="@color/white"
-        android:ems="10"
-        android:hint="   Correo elerctronico"
-        android:inputType="text"
+        android:hint="Correo electrónico"
+        android:inputType="textEmailAddress|textNoSuggestions"
+        android:fontFamily="sans-serif"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline14"
         app:layout_constraintVertical_bias="0.0" />
 
-    <EditText
-        android:id="@+id/contrasena"
+
+    <!-- Contenedor para contraseña + ojo -->
+    <FrameLayout
+        android:id="@+id/contenedorContrasena"
         android:layout_width="215dp"
         android:layout_height="48dp"
-        android:background="@color/white"
-        android:ems="10"
-        android:hint="   Contraseña"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/guideline15"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/correo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline13" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp">
+
+        <EditText
+            android:id="@+id/contrasena"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:fontFamily="sans-serif"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:paddingEnd="40dp"
+            android:paddingStart="12dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"/>
+
+
+        <ImageView
+            android:id="@+id/ojoContraseña"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/eye_closed"
+            android:contentDescription="Mostrar/Ocultar contraseña"/>
+    </FrameLayout>
+
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline12"
@@ -76,43 +106,48 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="514dp" />
+        app:layout_constraintGuide_begin="488dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="653dp" />
+        app:layout_constraintGuide_begin="662dp" />
 
-    <EditText
+    <Button
         android:id="@+id/registrarse"
-        android:layout_width="106dp"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="     Registrarse"
-        android:textColor="@color/white"
+        android:text="Registrarse"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/black"
+        android:textAllCaps="false"
         app:layout_constraintBottom_toTopOf="@+id/guideline18"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnIniciarSesion"
-        app:layout_constraintVertical_bias="0.85" />
+        app:layout_constraintVertical_bias="0.85"/>
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline16"
+
+    <CheckBox
+        android:id="@+id/checkRecordarme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="645dp" />
+        android:text="Recordarme"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/guideline39"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline40" />
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="710dp" />
+        app:layout_constraintGuide_begin="719dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline18"
@@ -120,4 +155,18 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="768dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="667dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="610dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

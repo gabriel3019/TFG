@@ -163,7 +163,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline27" />
 
     <EditText
-        android:id="@+id/correo_electronico"
+        android:id="@+id/correo"
         android:layout_width="242dp"
         android:layout_height="54dp"
         android:background="@color/white"

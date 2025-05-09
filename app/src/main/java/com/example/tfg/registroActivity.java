@@ -5,10 +5,16 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ImageView;
+import android.widget.EditText;
+import android.app.DatePickerDialog;
+import java.util.Calendar;
+import java.util.Locale;
+
+
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,7 +27,8 @@ import java.util.regex.Pattern;
 
 public class registroActivity extends AppCompatActivity {
 
-    private TextView etNombre, etApellidos, correo_electronico, etContrasena, repetir_contrasena, numero_telefono, fecha_nacimiento;
+    private EditText etContrasena, repetir_contrasena;
+    private TextView etNombre, etApellidos, correo_electronico, numero_telefono, fecha_nacimiento;
     private Button btnRegistrarse;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
@@ -35,22 +42,86 @@ public class registroActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
 
-        // Inicializar Firebase Auth y Firestore
+        // Inicializar Firebase
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-        // Referencias a los elementos del layout
+        // Referencias de campos
         etNombre = findViewById(R.id.nombre);
         etApellidos = findViewById(R.id.apellidos);
-        correo_electronico = findViewById(R.id.correo_electronico);
+        correo_electronico = findViewById(R.id.correo);
         etContrasena = findViewById(R.id.contrasena);
         repetir_contrasena = findViewById(R.id.repetir_contrasena);
         numero_telefono = findViewById(R.id.numero_telefono);
         fecha_nacimiento = findViewById(R.id.fecha_nacimiento);
-        btnRegistrarse = findViewById(R.id.btnRegistrarse);
+        fecha_nacimiento.setFocusable(false);
+        fecha_nacimiento.setClickable(true);
 
+        fecha_nacimiento.setOnClickListener(v -> {
+            Calendar calendar = Calendar.getInstance();
+            int year = calendar.get(Calendar.YEAR);
+            int month = calendar.get(Calendar.MONTH);
+            int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    registroActivity.this,
+                    (view, year1, month1, dayOfMonth) -> {
+                        String fecha = String.format(Locale.getDefault(), "%02d/%02d/%04d", dayOfMonth, month1 + 1, year1);
+                        fecha_nacimiento.setText(fecha);
+                    },
+                    year, month, day
+            );
+            datePickerDialog.show();
+        });
+
+        btnRegistrarse = findViewById(R.id.btnRegistrarse);
+        Button btnIrALogin = findViewById(R.id.btnIrALogin);
+
+        // ---- OJO CONTRASEÑA ----
+        ImageView ojoContraseña = findViewById(R.id.ojoContraseña);
+        final boolean[] isPasswordVisible = {false};
+        ojoContraseña.setOnClickListener(v -> {
+            isPasswordVisible[0] = !isPasswordVisible[0];
+            if (isPasswordVisible[0]) {
+                etContrasena.setInputType(android.text.InputType.TYPE_CLASS_TEXT |
+                        android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                ojoContraseña.setImageResource(R.drawable.eye_open);
+            } else {
+                etContrasena.setInputType(android.text.InputType.TYPE_CLASS_TEXT |
+                        android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                ojoContraseña.setImageResource(R.drawable.eye_closed);
+            }
+            etContrasena.setSelection(etContrasena.getText().length());
+        });
+
+        // ---- OJO REPETIR CONTRASEÑA ----
+        ImageView ojoRepetir = findViewById(R.id.ojoRepetirContrasena);
+        final boolean[] isRepeatVisible = {false};
+        ojoRepetir.setOnClickListener(v -> {
+            isRepeatVisible[0] = !isRepeatVisible[0];
+            if (isRepeatVisible[0]) {
+                repetir_contrasena.setInputType(android.text.InputType.TYPE_CLASS_TEXT |
+                        android.text.InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                ojoRepetir.setImageResource(R.drawable.eye_open);
+            } else {
+                repetir_contrasena.setInputType(android.text.InputType.TYPE_CLASS_TEXT |
+                        android.text.InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                ojoRepetir.setImageResource(R.drawable.eye_closed);
+            }
+            repetir_contrasena.setSelection(repetir_contrasena.getText().length());
+        });
+
+        // Botón para volver al login
+        btnIrALogin.setOnClickListener(v -> {
+            Intent intent = new Intent(registroActivity.this, loginActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
+        // Botón de registro
         btnRegistrarse.setOnClickListener(v -> registrarUsuario());
     }
+
 
     private void registrarUsuario() {
         String nombre = etNombre.getText().toString().trim();
