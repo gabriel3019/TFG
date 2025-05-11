@@ -91,6 +91,7 @@ public class ReservasActivity extends AppCompatActivity {
 
             DatePickerDialog dpd = new DatePickerDialog(
                     ReservasActivity.this,
+                    R.style.CustomDatePickerDialog,
                     (view, y, m, d) -> {
                         // Formatear (por ejemplo dd/MM/yyyy)
                         String dia = String.format(Locale.getDefault(), "%02d", d);
@@ -104,6 +105,15 @@ public class ReservasActivity extends AppCompatActivity {
             // No permitir fechas pasadas
             dpd.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
             dpd.show();
+
+            // Una vez mostrado, obtenemos los botones y cambiamos el color
+            Button botonOk = dpd.getButton(DatePickerDialog.BUTTON_POSITIVE);
+            Button botonCancelar = dpd.getButton(DatePickerDialog.BUTTON_NEGATIVE);
+
+            // Aplicamos el color rojo de tu paleta
+            int rojo = ContextCompat.getColor(this, R.color.red);
+            botonOk.setTextColor(rojo);
+            botonCancelar.setTextColor(rojo);
         });
 
 
