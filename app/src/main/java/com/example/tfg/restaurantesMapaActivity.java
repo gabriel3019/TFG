@@ -129,6 +129,7 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
                     try {
                         String name = doc.getString("nombre");
                         String address = doc.getString("direccion");
+                        String province = doc.getString("provincia");
                         double telephone = doc.getDouble("telefono");
                         double latitude = doc.getDouble("latitud");
                         double longitude = doc.getDouble("longitud");
@@ -143,7 +144,7 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
                                     latitude,
                                     longitude
                             );
-                            listaRestaurantes.add(new Restaurante(name, address, telephoneInt, latitude, longitude, distance));
+                            listaRestaurantes.add(new Restaurante(name, address, province, telephoneInt, latitude, longitude, distance));
                         }
                     } catch (Exception e) {
                         e.printStackTrace();

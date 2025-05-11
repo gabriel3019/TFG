@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/red"
     android:theme="@style/Theme.TextMain"
-    tools:context=".elegirRestaurantesActivity">
+    tools:context=".ReservasActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/MargenTop"
@@ -27,7 +27,7 @@
         android:id="@+id/textView"
         android:layout_width="153dp"
         android:layout_height="41dp"
-        android:text="RESTAURANTES"
+        android:text="RESERVAR"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="30sp"
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
+        app:layout_constraintGuide_percent="0.1504788" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_LogoLeft"
@@ -93,7 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.92" />
+        app:layout_constraintGuide_percent="0.9220246" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_HomeLeft"
@@ -122,65 +122,133 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_HomeTop"
         app:srcCompat="@drawable/logo_home" />
 
+    <Spinner
+        android:id="@+id/spinnerProvincias"
+        style="@style/Widget.Goiko.Spinner"
+        android:layout_width="340dp"
+        android:layout_height="40dp"
+        android:background="@drawable/bordes_redondos_blancos"
+        android:popupBackground="@drawable/bordes_redondos_blancos"
+        android:spinnerMode="dropdown"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineProvincia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineProvincia" />
+
+    <Spinner
+        android:id="@+id/spinnerRestaurantes"
+        style="@style/Widget.Goiko.Spinner"
+        android:layout_width="340dp"
+        android:layout_height="40dp"
+        android:background="@drawable/bordes_redondos_blancos"
+        android:popupBackground="@drawable/bordes_redondos_blancos"
+        android:spinnerMode="dropdown"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineRestaurante"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineRestaurante" />
+
+    <Spinner
+        android:id="@+id/spinnerHora"
+        style="@style/Widget.Goiko.Spinner"
+        android:layout_width="340dp"
+        android:layout_height="40dp"
+        android:background="@drawable/bordes_redondos_blancos"
+        android:popupBackground="@drawable/bordes_redondos_blancos"
+        android:spinnerMode="dropdown"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHora"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHora" />
+
+    <Spinner
+        android:id="@+id/spinnerPersonas"
+        style="@style/Widget.Goiko.Spinner"
+        android:layout_width="340dp"
+        android:layout_height="40dp"
+        android:background="@drawable/bordes_redondos_blancos"
+        android:popupBackground="@drawable/bordes_redondos_blancos"
+        android:spinnerMode="dropdown"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/guidelinePersonas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelinePersonas" />
+
+    <EditText
+        android:id="@+id/editTextFecha"
+        style="@style/Widget.Goiko.Spinner"
+        android:layout_width="340dp"
+        android:layout_height="40dp"
+        android:background="@drawable/bordes_redondos_blancos"
+        android:popupBackground="@drawable/bordes_redondos_blancos"
+        android:clickable="true"
+        android:focusable="false"
+        android:inputType="none"
+        android:text="Selecciona la fecha"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineFecha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineFecha" />
+
+    <Button
+        android:id="@+id/btnReservar"
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/black"
+        android:text="Reservar"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineBtnReservar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineBtnReservar" />
+
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_boton1Top"
+        android:id="@+id/guidelineProvincia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
+        app:layout_constraintGuide_percent="0.25" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_boton1Bot"
+        android:id="@+id/guidelineRestaurante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.35" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_boton2Bot"
+        android:id="@+id/guidelineFecha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.85" />
+        app:layout_constraintGuide_percent="0.45" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_boton2Top"
+        android:id="@+id/guidelineHora"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.55" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_botonesRight"
+        android:id="@+id/guidelinePersonas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.75" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65" />
 
-    <Button
-        android:id="@+id/buttonListaRest"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineBtnReservar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:height="120dp"
-        android:backgroundTint="@color/black"
-        android:text="Mostrar lista\nde restaurantes\nordenador por\ncercanía"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_boton1Bot"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_botonesRight"
-        app:layout_constraintStart_toStartOf="@+id/guideline_LogoRight"
-        app:layout_constraintTop_toTopOf="@+id/guideline_boton1Top" />
-
-    <Button
-        android:id="@+id/buttonMapaRest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:height="120dp"
-        android:backgroundTint="@color/black"
-        android:text="Mostrar en un\nmapa todos\nlos restaurantes"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_boton2Bot"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_botonesRight"
-        app:layout_constraintStart_toStartOf="@+id/guideline_LogoRight"
-        app:layout_constraintTop_toTopOf="@+id/guideline_boton2Top" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

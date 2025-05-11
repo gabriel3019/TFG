@@ -20,6 +20,8 @@ public class menuActivity extends AppCompatActivity {
 
     private Button btnAlergenos;
 
+    private Button btnReservas;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class menuActivity extends AppCompatActivity {
         btnRestaurantes = findViewById(R.id.btnRestaurantes);
         btnBebidas = findViewById(R.id.btnBebidas);
         btnAlergenos = findViewById(R.id.btnAlergenos);
+        btnReservas = findViewById(R.id.btnReservas);
 
 
 
@@ -56,6 +59,11 @@ public class menuActivity extends AppCompatActivity {
 
         btnAlergenos.setOnClickListener(v -> {
             Intent intent = new Intent(menuActivity.this, alergenosActivity.class);
+            startActivity(intent);
+        });
+
+        btnReservas.setOnClickListener(v -> {
+            Intent intent = new Intent(menuActivity.this, ReservasActivity.class);
             startActivity(intent);
         });
     }
