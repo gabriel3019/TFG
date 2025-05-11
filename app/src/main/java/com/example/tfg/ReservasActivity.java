@@ -1,6 +1,7 @@
 package com.example.tfg;
 
 import android.Manifest;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -8,6 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -27,9 +30,13 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 public class ReservasActivity extends AppCompatActivity {
 
@@ -46,6 +53,9 @@ public class ReservasActivity extends AppCompatActivity {
     private String personasSeleccionada;
     private String horaSeleccionada;
     private ImageButton btnHome;
+    private EditText editTextFecha;
+    private String fechaSeleccionada;
+    private Button btnReservar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +69,43 @@ public class ReservasActivity extends AppCompatActivity {
         });
 
         btnHome = findViewById(R.id.buttonHome);
+        btnReservar = findViewById(R.id.btnReservar);
 
         btnHome.setOnClickListener(v -> {
             Intent intent = new Intent(ReservasActivity.this, menuActivity.class);
             startActivity(intent);
         });
+
+        btnReservar.setOnClickListener(v -> {
+            reservar(v, provinciaSeleccionada, restauranteSeleccionado, fechaSeleccionada, horaSeleccionada, personasSeleccionada);
+        });
+
+        editTextFecha = findViewById(R.id.editTextFecha);
+
+        editTextFecha.setOnClickListener(v -> {
+            // Fecha por defecto: hoy
+            Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog dpd = new DatePickerDialog(
+                    ReservasActivity.this,
+                    (view, y, m, d) -> {
+                        // Formatear (por ejemplo dd/MM/yyyy)
+                        String dia = String.format(Locale.getDefault(), "%02d", d);
+                        String mes = String.format(Locale.getDefault(), "%02d", m + 1);
+                        fechaSeleccionada = dia + "/" + mes + "/" + y;
+                        editTextFecha.setText(fechaSeleccionada);
+                    },
+                    year, month, day
+            );
+
+            // No permitir fechas pasadas
+            dpd.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+            dpd.show();
+        });
+
 
         // Ubicación FAKE para testing sin GPS real
         Location ubicacionFake = new Location("mock");
@@ -80,7 +122,7 @@ public class ReservasActivity extends AppCompatActivity {
         provincias = getResources().getStringArray(R.array.provincias);
         ArrayAdapter<String> adapterProv = new ArrayAdapter<>(
                 this,
-                android.R.layout.simple_spinner_item,
+                R.layout.spinner_item,
                 provincias
         );
         adapterProv.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -90,7 +132,7 @@ public class ReservasActivity extends AppCompatActivity {
         personas = getResources().getStringArray(R.array.personas);
         ArrayAdapter<String> adapterPers = new ArrayAdapter<>(
                 this,
-                android.R.layout.simple_spinner_item,
+                R.layout.spinner_item,
                 personas
         );
         adapterPers.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -100,7 +142,7 @@ public class ReservasActivity extends AppCompatActivity {
         horas = getResources().getStringArray(R.array.horas);
         ArrayAdapter<String> adapterHoras = new ArrayAdapter<>(
                 this,
-                android.R.layout.simple_spinner_item,
+                R.layout.spinner_item,
                 horas
         );
         adapterHoras.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -119,7 +161,7 @@ public class ReservasActivity extends AppCompatActivity {
                     vacio.add("— No hay restaurantes —");
                     ArrayAdapter<String> a = new ArrayAdapter<>(
                             ReservasActivity.this,
-                            android.R.layout.simple_spinner_item,
+                            R.layout.spinner_item,
                             vacio
                     );
                     a.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -228,7 +270,7 @@ public class ReservasActivity extends AppCompatActivity {
 
                         ArrayAdapter<String> adapterRest = new ArrayAdapter<>(
                                 ReservasActivity.this,
-                                android.R.layout.simple_spinner_item,
+                                R.layout.spinner_item,
                                 nombres
                         );
                         adapterRest.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -259,5 +301,36 @@ public class ReservasActivity extends AppCompatActivity {
         b.setLatitude(lat2);
         b.setLongitude(lng2);
         return a.distanceTo(b) / 1000;
+    }
+
+    private void reservar(View v, String provinciaSeleccionada, String restauranteSeleccionado, String fechaSeleccionada, String horaSeleccionada, String personasSeleccionada) {
+        if (provinciaSeleccionada == null || restauranteSeleccionado == null
+                || horaSeleccionada == null || personasSeleccionada == null
+                || fechaSeleccionada == null) {
+            Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show();
+            return;
+        } else {
+            Reserva reserva = new Reserva(provinciaSeleccionada, restauranteSeleccionado, fechaSeleccionada, horaSeleccionada, personasSeleccionada);
+            reservaFirebase(v, reserva);
+        }
+    }
+
+    private void reservaFirebase(View v, Reserva reserva) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        Map<String, Object> nuevaReserva = new HashMap<>();
+        nuevaReserva.put("provincia", reserva.getProvincia());
+        nuevaReserva.put("restaurante", reserva.getRestaurante());
+        nuevaReserva.put("fecha", reserva.getFecha());
+        nuevaReserva.put("hora", reserva.getHora());
+        nuevaReserva.put("personas", reserva.getPersonas());
+
+        db.collection("Reservas").add(nuevaReserva)
+                .addOnSuccessListener(documentReference ->
+                        Toast.makeText(v.getContext(), "Reserva realizada con éxito.", Toast.LENGTH_SHORT).show())
+                .addOnFailureListener(e ->
+                        Toast.makeText(v.getContext(), "Error al realizar la reserva.", Toast.LENGTH_SHORT).show());
+
+        startActivity(new Intent(ReservasActivity.this, menuActivity.class));
     }
 }

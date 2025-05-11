@@ -48,7 +48,7 @@
     </string-array>
 
     <string-array name="personas">
-        <item>Personas</item>
+        <item>Selecciona las personas</item>
         <item>1 Persona</item>
         <item>2 Personas</item>
         <item>3 Personas</item>
@@ -72,7 +72,7 @@
     </string-array>
 
     <string-array name="horas">
-        <item>Hora</item>
+        <item>Selecciona la hora</item>
         <item>12:00</item>
         <item>12:15</item>
         <item>12:30</item>
