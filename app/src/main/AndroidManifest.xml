@@ -28,6 +28,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".ReservasActivity"
+            android:exported="false" />
+        <activity
             android:name=".pedidosActivity"
             android:exported="false" />
         <activity
