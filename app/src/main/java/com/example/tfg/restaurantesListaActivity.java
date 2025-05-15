@@ -37,6 +37,7 @@ public class restaurantesListaActivity extends AppCompatActivity {
     private RestAdapter restAdapter;
     private ArrayList<Restaurante> listaRestaurantes = new ArrayList<>();
     private ImageButton btnHome;
+    private Location ubicacionFake;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,11 @@ public class restaurantesListaActivity extends AppCompatActivity {
             Intent intent = new Intent(restaurantesListaActivity.this, menuActivity.class);
             startActivity(intent);
         });
+
+        // Ubicación FAKE para testing sin GPS real
+        ubicacionFake = new Location("mock");
+        ubicacionFake.setLatitude(40.43376);
+        ubicacionFake.setLongitude(-3.63169);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -96,7 +102,7 @@ public class restaurantesListaActivity extends AppCompatActivity {
             @Override
             public void onSuccess(Location location) {
                 if (location != null) {
-                    ubicacionActual = location;
+                    ubicacionFake = location;
                     cargarRestaurantes();
                 } else {
                     Toast.makeText(restaurantesListaActivity.this, "No se pudo obtener la ubicación", Toast.LENGTH_SHORT).show();
@@ -108,7 +114,7 @@ public class restaurantesListaActivity extends AppCompatActivity {
     private void cargarRestaurantes() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Restaurantes").get().addOnCompleteListener(task -> {
-            if (task.isSuccessful() && ubicacionActual != null) {
+            if (task.isSuccessful() && ubicacionFake != null) {
                 listaRestaurantes.clear();
                 for (DocumentSnapshot doc : task.getResult()) {
                     try {
@@ -124,8 +130,8 @@ public class restaurantesListaActivity extends AppCompatActivity {
                         // Verificación null para coordenadas
                         if (latitude != 0.0 && longitude != 0.0) {
                             double distance = calcularDistanciaKM(
-                                    ubicacionActual.getLatitude(),
-                                    ubicacionActual.getLongitude(),
+                                    ubicacionFake.getLatitude(),
+                                    ubicacionFake.getLongitude(),
                                     latitude,
                                     longitude
                             );

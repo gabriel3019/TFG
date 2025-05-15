@@ -41,6 +41,7 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
     private FusedLocationProviderClient fusedLocationClient;
     private Location ubicacionActual;
     private ArrayList<Restaurante> listaRestaurantes = new ArrayList<>();
+    private Location ubicacionFake;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,11 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
             Intent intent = new Intent(restaurantesMapaActivity.this, menuActivity.class);
             startActivity(intent);
         });
+
+        // Ubicación FAKE para testing sin GPS real
+        ubicacionFake = new Location("mock");
+        ubicacionFake.setLatitude(40.43376);
+        ubicacionFake.setLongitude(-3.63169);
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -80,7 +86,7 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
         }
         fusedLocationClient.getLastLocation().addOnSuccessListener(location -> {
             if (location != null) {
-                ubicacionActual = location;
+                ubicacionFake = location;
                 if (mMap != null) {
                     configurarMapaConUbicacion(location);
                     LatLng currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
@@ -106,8 +112,8 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
 
-        if (ubicacionActual != null) {
-            configurarMapaConUbicacion(ubicacionActual);
+        if (ubicacionFake != null) {
+            configurarMapaConUbicacion(ubicacionFake);
         }
     }
 
@@ -123,7 +129,7 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
     private void cargarRestaurantes() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Restaurantes").get().addOnCompleteListener(task -> {
-            if (task.isSuccessful() && ubicacionActual != null) {
+            if (task.isSuccessful() && ubicacionFake != null) {
                 listaRestaurantes.clear();
                 for (DocumentSnapshot doc : task.getResult()) {
                     try {
@@ -139,8 +145,8 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
                         // Verificación null para coordenadas
                         if (latitude != 0.0 && longitude != 0.0) {
                             double distance = calcularDistanciaKM(
-                                    ubicacionActual.getLatitude(),
-                                    ubicacionActual.getLongitude(),
+                                    ubicacionFake.getLatitude(),
+                                    ubicacionFake.getLongitude(),
                                     latitude,
                                     longitude
                             );
