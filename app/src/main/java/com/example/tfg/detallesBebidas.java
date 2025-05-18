@@ -1,6 +1,7 @@
 package com.example.tfg;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -57,7 +58,8 @@ public class detallesBebidas extends AppCompatActivity {
             finish();
         });
         botonComprar.setOnClickListener(v -> {
-            Toast.makeText(this, "Producto añadido a la compra", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(detallesBebidas.this, PedidosActivity.class);
+            startActivity(intent);
         });
     }
 }

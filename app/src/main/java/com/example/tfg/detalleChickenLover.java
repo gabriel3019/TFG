@@ -1,6 +1,7 @@
 package com.example.tfg;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -54,11 +55,11 @@ public class detalleChickenLover extends AppCompatActivity {
         });
 
         flechaAtras.setOnClickListener(v -> {
-            Toast.makeText(this, "Clic detectado", Toast.LENGTH_SHORT).show();
             finish();
         });
         botonComprar.setOnClickListener(v -> {
-            Toast.makeText(this, "Producto añadido a la compra", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(detalleChickenLover.this, PedidosActivity.class);
+            startActivity(intent);
         });
     }
 }
