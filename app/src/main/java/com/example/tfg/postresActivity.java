@@ -9,6 +9,11 @@ import android.widget.ImageView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Actividad que muestra la sección de postres en el menú.
+ * Los usuarios pueden seleccionar un postre específico para ver más detalles,
+ * volver a la carta general o regresar al menú principal.
+ */
 public class postresActivity extends AppCompatActivity {
 
     private ImageButton buttonHome;
@@ -16,6 +21,12 @@ public class postresActivity extends AppCompatActivity {
 
     private ImageView brownieSpears, frozenDeLaYaya, heladoDeChocolate, heladoDeVainilla, frozenGoikoOriginal, frozenPistacho, goikoCookie, cheeseCake;
 
+    /**
+     * Método que se ejecuta al crear la actividad.
+     * Inicializa los elementos visuales y los listeners para navegación y selección de productos.
+     *
+     * @param savedInstanceState Estado de la actividad guardado, si lo hay.
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +70,11 @@ public class postresActivity extends AppCompatActivity {
         heladoDeVainilla.setOnClickListener(v -> abrirDetalleProducto("zgYyxoaI6O6N6OXkOKq7"));
     }
 
+    /**
+     * Abre la actividad de detalle de un producto específico, pasando su ID como parámetro.
+     *
+     * @param productoId ID del producto en Firestore.
+     */
     private void abrirDetalleProducto (String productoId){
         Intent intent = new Intent(postresActivity.this, postresDetalle.class);
         intent.putExtra("productoId", productoId);

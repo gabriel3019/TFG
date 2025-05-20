@@ -33,6 +33,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+/**
+ * Actividad que muestra un mapa con la ubicación del usuario y los restaurantes cercanos.
+ * Utiliza Firestore para obtener los datos de los restaurantes y Google Maps para mostrarlos.
+ */
 public class restaurantesMapaActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -42,6 +46,11 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
     private Location ubicacionActual;
     private ArrayList<Restaurante> listaRestaurantes = new ArrayList<>();
 
+    /**
+     * Método llamado al crear la actividad.
+     *
+     * @param savedInstanceState Estado previamente guardado de la actividad.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +83,9 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
         }
     }
 
+    /**
+     * Obtiene la ubicación del dispositivo y configura el mapa.
+     */
     private void obtenerUbicacionYConfigurarMapa() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
@@ -92,6 +104,9 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
         });
     }
 
+    /**
+     * Callback que se llama tras solicitar permisos.
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -100,6 +115,11 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
         }
     }
 
+    /**
+     * Callback llamado cuando el mapa está listo para usarse.
+     *
+     * @param googleMap El objeto GoogleMap.
+     */
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
@@ -111,6 +131,11 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
         }
     }
 
+    /**
+     * Configura el mapa mostrando la ubicación actual y los restaurantes cercanos.
+     *
+     * @param location Ubicación actual del usuario.
+     */
     private void configurarMapaConUbicacion(Location location) {
         LatLng currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15));
@@ -120,6 +145,9 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
         cargarRestaurantes();
     }
 
+    /**
+     * Carga los restaurantes desde Firestore y los añade a la lista ordenada por distancia.
+     */
     private void cargarRestaurantes() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Restaurantes").get().addOnCompleteListener(task -> {
@@ -158,6 +186,9 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
         });
     }
 
+    /**
+     * Añade los marcadores de restaurantes al mapa.
+     */
     private void ponerMarcadoresAlMapa() {
         if (mMap == null) return;
 
@@ -175,12 +206,26 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
         }
     }
 
+    /**
+     * Calcula la distancia en kilómetros entre dos coordenadas.
+     *
+     * @param lat1 Latitud del punto 1.
+     * @param lon1 Longitud del punto 1.
+     * @param lat2 Latitud del punto 2.
+     * @param lon2 Longitud del punto 2.
+     * @return Distancia en kilómetros.
+     */
     private double calcularDistanciaKM(double lat1, double lon1, double lat2, double lon2) {
         float[] results = new float[1];
         Location.distanceBetween(lat1, lon1, lat2, lon2, results);
         return results[0] / 1000.0;
     }
 
+    /**
+     * Callback llamado cuando cambia la captura de puntero.
+     *
+     * @param hasCapture true si hay captura, false si no.
+     */
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
         super.onPointerCaptureChanged(hasCapture);

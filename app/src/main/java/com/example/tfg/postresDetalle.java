@@ -16,11 +16,23 @@ import androidx.core.view.WindowInsetsCompat;
 import com.bumptech.glide.Glide;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+
+/**
+ * Actividad que muestra los detalles de un postre seleccionado.
+ * Recupera los datos del producto desde Firebase Firestore y los muestra en la interfaz.
+ * Permite al usuario ver la imagen, el nombre, la descripción, el precio y simular una compra.
+ */
 public class postresDetalle extends AppCompatActivity {
     private ImageView imagenProducto, flechaAtras;
     private TextView nombreProducto, descripcionProducto, precioProducto;
     private Button botonComprar;
 
+    /**
+     * Método que se ejecuta al crear la actividad.
+     * Inicializa los componentes de la interfaz y obtiene los datos del producto desde Firestore.
+     *
+     * @param savedInstanceState Estado guardado de la actividad, si lo hay.
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

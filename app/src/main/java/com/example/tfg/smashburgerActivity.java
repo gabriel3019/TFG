@@ -9,6 +9,10 @@ import android.widget.ImageView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Actividad que muestra el listado de hamburguesas tipo Smash disponibles.
+ * Permite acceder al detalle de cada producto y navegar al menú principal o a la carta general.
+ */
 public class smashburgerActivity extends AppCompatActivity {
 
     private ImageButton buttonHome;
@@ -16,6 +20,11 @@ public class smashburgerActivity extends AppCompatActivity {
 
     private ImageView hattrick, mas_s_mash, don_vito, smashic;
 
+    /**
+     * Método llamado al iniciar la actividad. Configura la interfaz y los listeners.
+     *
+     * @param savedInstanceState Estado guardado previamente (si lo hubiera).
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +59,11 @@ public class smashburgerActivity extends AppCompatActivity {
         smashic.setOnClickListener(v -> abrirDetalleProducto("qWwVc5g6lwheydD0IfeF"));
     }
 
-    // Función que abre el detalle del producto
+    /**
+     * Abre la actividad de detalle para una Smash Burger específica.
+     *
+     * @param productoId ID del producto a mostrar en la pantalla de detalles.
+     */
     private void abrirDetalleProducto(String productoId) {
         Intent intent = new Intent(smashburgerActivity.this, detalleSmashBurgers.class);
         intent.putExtra("productoId", productoId);

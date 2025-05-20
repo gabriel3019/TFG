@@ -25,6 +25,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+/**
+ * Clase {@code registroActivity} encargada de manejar el registro de nuevos usuarios en la aplicación.
+ * Incluye validaciones de campos, creación de usuarios con Firebase Authentication
+ * y almacenamiento de información adicional en Firebase Firestore.
+ *
+ */
 public class registroActivity extends AppCompatActivity {
 
     private EditText etContrasena, repetir_contrasena;
@@ -33,10 +39,20 @@ public class registroActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
 
-    // Expresión regular para validar la contraseña
+    /**
+     * Expresión regular para validar contraseñas seguras:
+     * - Mínimo 8 caracteres
+     * - Al menos una mayúscula, una minúscula, un número y un símbolo especial
+     */
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!]).{8,}$");
 
+    /**
+     * Método llamado al crear la actividad. Se inicializan los componentes de la interfaz,
+     * Firebase, y se configuran los listeners.
+     *
+     * @param savedInstanceState Estado previamente guardado de la actividad
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,7 +138,10 @@ public class registroActivity extends AppCompatActivity {
         btnRegistrarse.setOnClickListener(v -> registrarUsuario());
     }
 
-
+    /**
+     * Método que realiza las validaciones y registra al usuario en Firebase Authentication.
+     * En caso de éxito, también almacena los datos adicionales en Firestore.
+     */
     private void registrarUsuario() {
         String nombre = etNombre.getText().toString().trim();
         String apellidos = etApellidos.getText().toString().trim();

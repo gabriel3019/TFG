@@ -38,6 +38,13 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+/**
+ * Actividad para gestionar reservas en restaurantes.
+ * Permite seleccionar provincia, restaurante, fecha, hora y número de personas.
+ * También obtiene la ubicación del usuario para ordenar los restaurantes por cercanía.
+ *
+ * Usa Firestore para obtener los restaurantes registrados por provincia.
+ */
 public class ReservasActivity extends AppCompatActivity {
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
@@ -57,6 +64,12 @@ public class ReservasActivity extends AppCompatActivity {
     private String fechaSeleccionada;
     private Button btnReservar;
 
+    /**
+     * Método llamado al crear la actividad. Inicializa la interfaz, los eventos
+     * y configura los elementos interactivos.
+     *
+     * @param savedInstanceState Estado guardado de la actividad.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -222,6 +235,13 @@ public class ReservasActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Callback de resultado para la solicitud de permisos.
+     *
+     * @param code   Código de solicitud.
+     * @param perms  Array de permisos solicitados.
+     * @param grants Array de resultados para cada permiso.
+     */
     @Override
     public void onRequestPermissionsResult(int code, String[] perms, int[] grants) {
         super.onRequestPermissionsResult(code, perms, grants);
@@ -231,6 +251,10 @@ public class ReservasActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Solicita la ubicación actual del usuario usando FusedLocationProviderClient.
+     * Si se concede el permiso, se actualiza la variable {@code ubicacionActual}.
+     */
     private void obtenerUbicacion() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) return;
@@ -243,7 +267,13 @@ public class ReservasActivity extends AppCompatActivity {
                 });
     }
 
-    // Carga restaurantes y actualiza spinnerRestaurantes
+    /**
+     * Carga los restaurantes disponibles en una provincia específica desde Firestore.
+     * Ordena los resultados por distancia respecto a la ubicación actual o una ubicación falsa.
+     *
+     * @param provincia     Provincia seleccionada.
+     * @param ubicacionFake Ubicación simulada en caso de que no haya permisos de ubicación.
+     */
     private void cargarRestaurantes(String provincia, Location ubicacionFake) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Restaurantes")
@@ -303,6 +333,15 @@ public class ReservasActivity extends AppCompatActivity {
                 });
     }
 
+    /**
+     * Calcula la distancia en kilómetros entre dos puntos geográficos.
+     *
+     * @param lat1 Latitud del primer punto.
+     * @param lng1 Longitud del primer punto.
+     * @param lat2 Latitud del segundo punto.
+     * @param lng2 Longitud del segundo punto.
+     * @return Distancia en kilómetros.
+     */
     private double calcularDistanciaKM(
             double lat1, double lng1, double lat2, double lng2) {
         Location a = new Location("A"), b = new Location("B");
@@ -313,6 +352,17 @@ public class ReservasActivity extends AppCompatActivity {
         return a.distanceTo(b) / 1000;
     }
 
+    /**
+     * Envía los datos de la reserva seleccionada a Firestore.
+     * Verifica que todos los campos estén completos antes de enviar.
+     *
+     * @param v Vista que dispara el evento (botón Reservar).
+     * @param provinciaSeleccionada  Provincia seleccionada.
+     * @param restauranteSeleccionado Restaurante seleccionado.
+     * @param fechaSeleccionada  Fecha seleccionada.
+     * @param horaSeleccionada  Hora seleccionada.
+     * @param personasSeleccionada  Número de personas seleccionadas.
+     */
     private void reservar(View v, String provinciaSeleccionada, String restauranteSeleccionado, String fechaSeleccionada, String horaSeleccionada, String personasSeleccionada) {
         if (provinciaSeleccionada == null || restauranteSeleccionado == null
                 || horaSeleccionada == null || personasSeleccionada == null

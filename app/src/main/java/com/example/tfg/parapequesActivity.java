@@ -12,6 +12,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+/**
+ * Actividad {@code parapequesActivity} que muestra opciones para productos
+ * infantiles de Goiko, permitiendo navegar a detalles específicos o a otras
+ * pantallas de la aplicación como el menú principal o la carta.
+ *
+ * Contiene botones para volver al menú, regresar a la carta y acceder a detalles
+ * de productos infantiles de carne y pollo.
+ *
+ */
 public class parapequesActivity extends AppCompatActivity {
 
     private ImageButton buttonHome;
@@ -19,6 +28,12 @@ public class parapequesActivity extends AppCompatActivity {
 
     private ImageView goiko_kids_de_carne, goiko_kids_de_pollo;
 
+    /**
+     * Método que se llama al crear la actividad. Inicializa vistas, activa el modo
+     * EdgeToEdge y configura los listeners para los botones e imágenes.
+     *
+     * @param savedInstanceState Estado previo de la actividad si existe.
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +64,11 @@ public class parapequesActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Abre la actividad de detalle para el producto cuyo ID se pasa como parámetro.
+     *
+     * @param productoId ID del producto para mostrar su detalle.
+     */
     private void abrirDetalleProducto (String productoId){
         Intent intent = new Intent(parapequesActivity.this, detalleParaPeques.class);
         intent.putExtra("productoId", productoId);

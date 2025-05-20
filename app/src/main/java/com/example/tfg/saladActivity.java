@@ -12,6 +12,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+/**
+ * Actividad que muestra una selección de ensaladas disponibles en la carta.
+ * Incluye navegación al menú principal, a la carta general y al detalle de cada ensalada.
+ */
 public class saladActivity extends AppCompatActivity {
 
     private ImageButton buttonHome;
@@ -19,6 +23,11 @@ public class saladActivity extends AppCompatActivity {
 
     private ImageView green_day, ave_cesar;
 
+    /**
+     * Método llamado al crear la actividad. Inicializa la interfaz de usuario y los listeners.
+     *
+     * @param savedInstanceState Estado de la instancia guardado (si existe).
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +57,11 @@ public class saladActivity extends AppCompatActivity {
         ave_cesar.setOnClickListener(v -> abrirDetalleProducto("h4SKKUrDwMYzEePCkPRI"));
     }
 
+    /**
+     * Abre la actividad de detalle para una ensalada específica.
+     *
+     * @param productoId ID del producto que se mostrará en el detalle.
+     */
     private void abrirDetalleProducto (String productoId){
         Intent intent = new Intent(saladActivity.this, detalleSalad.class);
         intent.putExtra("productoId", productoId);

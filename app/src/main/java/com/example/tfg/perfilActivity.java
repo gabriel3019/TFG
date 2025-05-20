@@ -11,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * Actividad que muestra los datos del perfil del usuario autenticado.
+ * Permite visualizar el nombre, apellidos y correo electrónico, obtenidos desde Firestore.
+ */
 public class perfilActivity extends AppCompatActivity {
 
     private EditText etNombre, etApellidos, etCorreo;
@@ -18,6 +22,12 @@ public class perfilActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
 
+    /**
+     * Método que se llama al crear la actividad.
+     * Inicializa los componentes, Firebase y carga los datos del usuario.
+     *
+     * @param savedInstanceState Estado guardado de la actividad, si existe.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +54,10 @@ public class perfilActivity extends AppCompatActivity {
         cargarDatosUsuario();
     }
 
+    /**
+     * Método que obtiene los datos del usuario actual desde Firestore
+     * y los muestra en los campos de texto correspondientes.
+     */
     private void cargarDatosUsuario() {
         String userId = mAuth.getCurrentUser().getUid();
 

@@ -28,6 +28,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+/**
+ * Actividad que muestra una lista de restaurantes ordenados por cercanía a la ubicación actual del usuario.
+ *
+ * Utiliza Firebase Firestore para obtener los datos de los restaurantes, y la ubicación del usuario
+ * para calcular la distancia entre este y cada restaurante. Luego, la lista se muestra en un RecyclerView.
+ *
+ * Requiere permisos de ubicación para funcionar correctamente.
+ */
 public class restaurantesListaActivity extends AppCompatActivity {
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
@@ -38,6 +46,12 @@ public class restaurantesListaActivity extends AppCompatActivity {
     private ArrayList<Restaurante> listaRestaurantes = new ArrayList<>();
     private ImageButton btnHome;
 
+    /**
+     * Método que se ejecuta al crear la actividad.
+     * Se configura la interfaz, se solicita el permiso de ubicación y se obtiene la ubicación del usuario.
+     *
+     * @param savedInstanceState Estado guardado de la instancia.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +83,13 @@ public class restaurantesListaActivity extends AppCompatActivity {
         restRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    /**
+     * Método que se llama cuando el usuario responde a la solicitud de permisos.
+     *
+     * @param requestCode  Código de solicitud.
+     * @param permissions  Lista de permisos solicitados.
+     * @param grantResults Resultados de la solicitud.
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -81,6 +102,10 @@ public class restaurantesListaActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Obtiene la ubicación actual del usuario utilizando el FusedLocationProviderClient.
+     * Si la ubicación se obtiene correctamente, llama a {@link #cargarRestaurantes()}.
+     */
     private void obtenerUbicacion() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -105,6 +130,11 @@ public class restaurantesListaActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Carga la lista de restaurantes desde Firebase Firestore.
+     * Calcula la distancia desde la ubicación del usuario a cada restaurante y ordena la lista por cercanía.
+     * Llama a {@link #mostrarRestaurantes()} para mostrar la lista en pantalla.
+     */
     private void cargarRestaurantes() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Restaurantes").get().addOnCompleteListener(task -> {
@@ -143,11 +173,23 @@ public class restaurantesListaActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Muestra la lista de restaurantes en el RecyclerView utilizando un adaptador personalizado.
+     */
     private void mostrarRestaurantes() {
         restAdapter = new RestAdapter(listaRestaurantes);
         restRecyclerView.setAdapter(restAdapter);
     }
 
+    /**
+     * Calcula la distancia en kilómetros entre dos ubicaciones geográficas.
+     *
+     * @param lat1 Latitud del primer punto.
+     * @param lng1 Longitud del primer punto.
+     * @param lat2 Latitud del segundo punto.
+     * @param lng2 Longitud del segundo punto.
+     * @return Distancia entre los dos puntos en kilómetros.
+     */
     private double calcularDistanciaKM(double lat1, double lng1, double lat2, double lng2) {
         Location location1 = new Location("start");
         location1.setLatitude(lat1);

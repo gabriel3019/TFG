@@ -17,6 +17,10 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
+/**
+ * Actividad que muestra una lista de productos pedidos cargados desde
+ * varias colecciones de Firestore, permitiendo al usuario realizar un pedido.
+ */
 public class PedidosActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
@@ -24,6 +28,12 @@ public class PedidosActivity extends AppCompatActivity {
     private ArrayList<ProductoPedido> productos;
     private FirebaseFirestore db;
 
+    /**
+     * Método llamado al crear la actividad.
+     * Inicializa las vistas, configura el RecyclerView y carga los productos desde Firestore.
+     *
+     * @param savedInstanceState Estado guardado anterior (si existe).
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +61,10 @@ public class PedidosActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Carga los productos de diferentes colecciones de Firestore.
+     * Combina los resultados y actualiza el adaptador del RecyclerView.
+     */
     private void loadProductos() {
         ArrayList<String> colecciones = new ArrayList<>();
         colecciones.add("entrantes");
