@@ -17,12 +17,23 @@ import androidx.core.view.WindowInsetsCompat;
 import com.bumptech.glide.Glide;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * Actividad que muestra los detalles de un producto de la categoría "Para Peques".
+ * Recupera los datos del producto desde Firestore y permite visualizar nombre, descripción,
+ * precio e imagen del producto. También permite iniciar el proceso de compra.
+ */
 public class detalleParaPeques extends AppCompatActivity {
 
     private ImageView imagenProducto, flechaAtras;
     private TextView nombreProducto, descripcionProducto, precioProducto;
     private Button botonComprar;
 
+    /**
+     * Método llamado al crear la actividad. Inicializa las vistas, carga los datos del producto
+     * desde Firebase Firestore y configura los botones de navegación y compra.
+     *
+     * @param savedInstanceState Estado anterior guardado de la actividad (si existe).
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

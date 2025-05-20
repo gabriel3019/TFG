@@ -12,6 +12,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+/**
+ * Actividad que muestra los productos de la categoría "Chicken Lovers".
+ * Permite al usuario ver detalles de cada producto, volver a la carta o regresar al menú principal.
+ */
 public class chickenloverActivity extends AppCompatActivity {
 
     private ImageButton buttonHome;
@@ -19,6 +23,12 @@ public class chickenloverActivity extends AppCompatActivity {
 
     private ImageView goikotenders, muslona, kiki;
 
+    /**
+     * Método llamado cuando se crea la actividad.
+     * Inicializa los componentes visuales y configura la navegación entre pantallas y detalles de productos.
+     *
+     * @param savedInstanceState Estado previamente guardado de la actividad (si existe).
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +59,12 @@ public class chickenloverActivity extends AppCompatActivity {
         muslona.setOnClickListener(v -> abrirDetalleProducto("IyULpescxZh45AGdAvmP"));
         kiki.setOnClickListener(v -> abrirDetalleProducto("DkSPZu4UBNl0xmFJpg96"));
     }
+
+    /**
+     * Abre la pantalla de detalle de un producto específico.
+     *
+     * @param productoId ID único del producto en la base de datos.
+     */
         private void abrirDetalleProducto (String productoId){
             Intent intent = new Intent(chickenloverActivity.this, detalleChickenLover.class);
             intent.putExtra("productoId", productoId);

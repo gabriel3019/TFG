@@ -17,6 +17,15 @@ import androidx.core.view.WindowInsetsCompat;
 import com.bumptech.glide.Glide;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * Actividad que muestra los detalles de una Smash Burger.
+ * <p>
+ * Esta actividad recupera el ID del producto recibido mediante un Intent,
+ * consulta la base de datos Firestore para obtener información como
+ * nombre, descripción, precio e imagen, y los muestra en la interfaz.
+ * También ofrece un botón para proceder a la compra y una flecha para volver.
+ * </p>
+ */
 public class detalleSmashBurgers extends AppCompatActivity {
 
     private ImageView imagenProducto, flechaAtras;
@@ -25,6 +34,16 @@ public class detalleSmashBurgers extends AppCompatActivity {
 
     private Button botonComprar;
 
+    /**
+     * Método llamado al crear la actividad.
+     * <p>
+     * Inicializa las vistas, recupera el ID del producto desde el Intent,
+     * obtiene los datos desde Firestore y los muestra.
+     * Maneja casos donde el ID no es recibido o la consulta falla.
+     * </p>
+     *
+     * @param savedInstanceState Estado previamente guardado de la actividad.
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

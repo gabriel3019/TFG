@@ -17,12 +17,25 @@ import androidx.core.view.WindowInsetsCompat;
 import com.bumptech.glide.Glide;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * Actividad que muestra los detalles de una bebida.
+ * Obtiene la información desde Firebase Firestore y la muestra en la interfaz,
+ * incluyendo nombre, descripción, precio e imagen del producto.
+ * Permite también iniciar el proceso de compra.
+ */
 public class detallesBebidas extends AppCompatActivity {
 
     private ImageView imagenProducto, flechaAtras;
     private TextView nombreProducto, descripcionProducto, precioProducto;
     private Button botonComprar;
 
+    /**
+     * Método llamado al crear la actividad.
+     * Inicializa vistas, recupera el ID del producto desde el intent,
+     * consulta Firestore para obtener detalles y los muestra.
+     *
+     * @param savedInstanceState Estado guardado previamente (si existe).
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

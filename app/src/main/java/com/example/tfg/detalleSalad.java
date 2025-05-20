@@ -17,11 +17,24 @@ import androidx.core.view.WindowInsetsCompat;
 import com.bumptech.glide.Glide;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * Actividad que muestra los detalles de una ensalada (salad).
+ * Recupera los datos desde Firebase Firestore y los muestra en pantalla,
+ * incluyendo nombre, descripción, precio e imagen del producto.
+ * También permite al usuario iniciar el proceso de compra.
+ */
 public class detalleSalad extends AppCompatActivity {
     private ImageView imagenProducto, flechaAtras;
     private TextView nombreProducto, descripcionProducto, precioProducto;
     private Button botonComprar;
 
+    /**
+     * Método que se ejecuta al crear la actividad.
+     * Inicializa las vistas, obtiene el ID del producto, consulta los datos en Firestore
+     * y muestra la información en pantalla.
+     *
+     * @param savedInstanceState Estado guardado anteriormente (si existe).
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -16,12 +16,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * Actividad que muestra los detalles de un producto de la categoría "Entrantes".
+ * Obtiene la información desde Firestore y permite al usuario ver la imagen,
+ * descripción, precio y realizar la compra.
+ */
 public class DetalleEntranteActivity extends AppCompatActivity {
 
     private ImageView imagenProducto, flechaAtras;
     private TextView nombreProducto, descripcionProducto, precioProducto;
     private Button botonComprar;
 
+    /**
+     * Método que se ejecuta al iniciar la actividad. Recupera los datos del producto desde Firestore
+     * y configura los botones de navegación y acción.
+     *
+     * @param savedInstanceState Estado previamente guardado de la actividad (si lo hay).
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

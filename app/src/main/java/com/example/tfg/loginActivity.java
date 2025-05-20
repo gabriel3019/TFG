@@ -18,6 +18,11 @@ import androidx.core.splashscreen.SplashScreen;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * Actividad que permite al usuario iniciar sesión con su correo y contraseña,
+ * utilizando Firebase Authentication. También permite recordar las credenciales
+ * mediante SharedPreferences y navegar a la pantalla de registro.
+ */
 public class loginActivity extends AppCompatActivity {
 
     private EditText etCorreo, etContrasena;
@@ -27,7 +32,12 @@ public class loginActivity extends AppCompatActivity {
     private CheckBox checkRecordarme;
     private boolean isPasswordVisible = false;
 
-
+    /**
+     * Método llamado cuando se crea la actividad. Se encarga de inicializar los componentes,
+     * gestionar la visibilidad de la contraseña, recuperar datos guardados, y definir los listeners.
+     *
+     * @param savedInstanceState Estado previamente guardado de la actividad (si existe).
+     */
 
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -91,6 +101,12 @@ public class loginActivity extends AppCompatActivity {
 
     }
 
+
+    /**
+     * Inicia sesión con las credenciales proporcionadas por el usuario.
+     * Si se marca la opción "Recordarme", guarda los datos en SharedPreferences.
+     * Si la autenticación es exitosa, navega a {@link menuActivity}.
+     */
     private void iniciarSesion() {
         String correo = etCorreo.getText().toString().trim();
         String contrasena = etContrasena.getText().toString().trim();

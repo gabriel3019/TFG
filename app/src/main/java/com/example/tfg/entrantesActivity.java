@@ -9,6 +9,14 @@ import android.widget.ImageView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Actividad que muestra la pantalla de entrantes disponibles.
+ * <p>
+ * Permite navegar al menú principal o a la carta completa.
+ * También muestra una lista de productos entrantes, cada uno con un
+ * listener que abre la pantalla de detalle correspondiente al producto seleccionado.
+ * </p>
+ */
 public class entrantesActivity extends AppCompatActivity {
 
     private ImageButton buttonHome;
@@ -16,6 +24,15 @@ public class entrantesActivity extends AppCompatActivity {
 
     private ImageView crispyChickenWings, teques, tequesVinci, chiquenTenders, nachorreo, onionRings;
 
+    /**
+     * Método llamado al crear la actividad.
+     * <p>
+     * Configura el layout, habilita el modo Edge to Edge, inicializa los botones
+     * y asigna listeners para navegación y apertura de detalles de productos.
+     * </p>
+     *
+     * @param savedInstanceState Estado previamente guardado de la actividad.
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +73,11 @@ public class entrantesActivity extends AppCompatActivity {
         onionRings.setOnClickListener(v -> abrirDetalleProducto("cmVDTqz7Cg1VffPGSvw9")); // ID real de ejemplo
     }
 
-    // Función que abre el detalle del producto
+    /**
+     * Abre la actividad de detalle para el producto seleccionado.
+     *
+     * @param productoId ID único del producto que se desea mostrar.
+     */
     private void abrirDetalleProducto(String productoId) {
         Intent intent = new Intent(entrantesActivity.this, DetalleEntranteActivity.class);
         intent.putExtra("productoId", productoId);

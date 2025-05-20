@@ -17,12 +17,22 @@ import androidx.core.view.WindowInsetsCompat;
 import com.bumptech.glide.Glide;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * Actividad que muestra los detalles de un producto de la categoría "Chicken Lovers".
+ * Recupera la información desde Firestore y permite al usuario iniciar el proceso de compra.
+ */
 public class detalleChickenLover extends AppCompatActivity {
 
     private ImageView imagenProducto, flechaAtras;
     private TextView nombreProducto, descripcionProducto, precioProducto;
     private Button botonComprar;
 
+    /**
+     * Método llamado al crear la actividad. Carga la información del producto desde Firestore
+     * y configura los botones de navegación y acción.
+     *
+     * @param savedInstanceState Estado previamente guardado de la actividad (si lo hay).
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

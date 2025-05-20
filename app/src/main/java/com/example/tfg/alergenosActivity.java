@@ -1,5 +1,6 @@
 package com.example.tfg;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -22,6 +23,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Actividad que permite al usuario visualizar productos alimenticios y filtrarlos
+ * según los alérgenos seleccionados mediante checkboxes.
+ */
 public class alergenosActivity extends AppCompatActivity {
 
     private List<Producto> todosProductos = new ArrayList<>();
@@ -29,13 +34,20 @@ public class alergenosActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ProductoAdapter adapter;
 
-    // Checkboxes
+    // Checkboxes para alérgenos
     private CheckBox cbGluten, cbCrustaceos, cbHuevos, cbPescado, cbCacahuetes, cbSoja;
     private CheckBox cbLacteos, cbFrutosSecos, cbApio, cbMostaza, cbSesamo, cbSulfitos;
     private ScrollView scrollView;
 
     private ImageView flecha;
 
+    /**
+     * Método que se ejecuta al crear la actividad.
+     *
+     * @param savedInstanceState Estado guardado anteriormente (si lo hay).
+     */
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +81,10 @@ public class alergenosActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Inicializa las vistas, incluyendo los checkboxes y el RecyclerView.
+     */
+
     private void inicializarVistas() {
         // Checkboxes
         cbGluten = findViewById(R.id.cbGluten);
@@ -89,6 +105,11 @@ public class alergenosActivity extends AppCompatActivity {
         scrollView = findViewById(R.id.scrollView);
     }
 
+
+
+    /**
+     * Carga la lista completa de productos con sus respectivos alérgenos.
+     */
     private void cargarProductos() {
         // Limpiar listas
         todosProductos.clear();
@@ -128,6 +149,9 @@ public class alergenosActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Filtra los productos que no contienen los alérgenos seleccionados.
+     */
     private void filtrarProductos() {
         List<String> alergenosSeleccionados = obtenerAlergenosSeleccionados();
 
@@ -141,6 +165,12 @@ public class alergenosActivity extends AppCompatActivity {
 
         mostrarResultados();
     }
+
+    /**
+     * Devuelve una lista con los alérgenos seleccionados por el usuario.
+     *
+     * @return Lista de alérgenos seleccionados.
+     */
 
     private List<String> obtenerAlergenosSeleccionados() {
         List<String> seleccionados = new ArrayList<>();
@@ -161,6 +191,9 @@ public class alergenosActivity extends AppCompatActivity {
         return seleccionados;
     }
 
+    /**
+     * Notifica al adaptador para actualizar la lista de productos mostrados.
+     */
     private void mostrarResultados() {
         if (productosFiltrados.isEmpty()) {
             Toast.makeText(this, "No hay productos que cumplan con tus filtros", Toast.LENGTH_LONG).show();

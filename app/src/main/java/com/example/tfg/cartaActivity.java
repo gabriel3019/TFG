@@ -9,12 +9,22 @@ import android.widget.ImageView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Actividad que muestra la carta del restaurante Goiko.
+ * Contiene accesos visuales a las distintas categorías de productos del menú,
+ * y permite la navegación hacia otras pantallas específicas.
+ */
 public class cartaActivity extends AppCompatActivity {
 
     private ImageButton buttonHome;
     private ImageView entrantes, hamburgesas, smashburgers, chicken_lovers, para_peques, salad, postres, bebidas;
 
-
+    /**
+     * Método llamado cuando se crea la actividad.
+     * Inicializa los componentes visuales y configura la navegación por categorías.
+     *
+     * @param savedInstanceState Estado previamente guardado de la actividad (si existe).
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -9,6 +9,14 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Clase {@code menuActivity} que representa la pantalla principal del menú
+ * donde el usuario puede acceder a diferentes secciones de la aplicación.
+ *
+ * Cada botón en esta actividad redirige a una pantalla diferente de la app
+ * (carta, bebidas, restaurantes, alérgenos, reservas, pedidos, perfil).
+ *
+ */
 public class menuActivity extends AppCompatActivity {
 
     private ImageView Perfil;
@@ -24,6 +32,12 @@ public class menuActivity extends AppCompatActivity {
 
     private Button btnPedidos;
 
+    /**
+     * Método llamado al crear la actividad. Se inicializan todos los componentes
+     * y se configuran los listeners para los botones.
+     *
+     * @param savedInstanceState Estado anterior de la actividad, si existe.
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

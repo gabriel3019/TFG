@@ -11,6 +11,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+/**
+ * Actividad que permite al usuario elegir entre ver una lista o un mapa de restaurantes.
+ * <p>
+ * Ofrece botones para navegar a la lista de restaurantes, al mapa de restaurantes
+ * y para volver al menú principal.
+ * También aplica configuraciones para mostrar contenido en modo Edge to Edge
+ * respetando los Insets del sistema.
+ * </p>
+ */
 public class elegirRestaurantesActivity extends AppCompatActivity {
 
     private Button btnLista;
@@ -18,6 +27,15 @@ public class elegirRestaurantesActivity extends AppCompatActivity {
     private ImageButton btnHome;
 
 
+    /**
+     * Método llamado al crear la actividad.
+     * <p>
+     * Inicializa la vista, habilita el modo Edge to Edge y configura los
+     * botones para navegar a las actividades correspondientes.
+     * </p>
+     *
+     * @param savedInstanceState Estado previamente guardado de la actividad.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

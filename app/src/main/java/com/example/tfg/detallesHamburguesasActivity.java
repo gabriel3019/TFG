@@ -17,11 +17,26 @@ import androidx.core.view.WindowInsetsCompat;
 import com.bumptech.glide.Glide;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * Actividad que muestra los detalles de una hamburguesa.
+ * Obtiene la información desde Firebase Firestore y la muestra en la interfaz,
+ * incluyendo nombre, descripción, precio e imagen del producto.
+ * Permite iniciar el proceso de compra y volver a la pantalla anterior.
+ */
 public class detallesHamburguesasActivity extends AppCompatActivity {
     private ImageView imagenProducto, flechaAtras;
     private TextView nombreProducto, descripcionProducto, precioProducto;
     private Button botonComprar;
 
+
+    /**
+     * Método llamado al crear la actividad.
+     * Inicializa las vistas, recupera el ID del producto desde el intent,
+     * consulta Firestore para obtener detalles y los muestra en la interfaz.
+     * Gestiona errores si no se recibe el ID o si no se encuentran datos.
+     *
+     * @param savedInstanceState Estado guardado previamente (si existe).
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

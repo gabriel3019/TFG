@@ -9,6 +9,10 @@ import android.widget.ImageView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Actividad que muestra las bebidas del menú de Goiko.
+ * Permite la navegación hacia el menú principal, la carta y el detalle de cada bebida.
+ */
 public class bebidasActivity extends AppCompatActivity {
 
     private ImageButton buttonHome;
@@ -16,6 +20,11 @@ public class bebidasActivity extends AppCompatActivity {
 
     private ImageView goiko_ice_tea, limonada_goiko_fresh, refrescos, cervezas;
 
+    /**
+     * Método llamado al crear la actividad.
+     *
+     * @param savedInstanceState Estado previamente guardado de la actividad (si existe).
+     */
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +61,11 @@ public class bebidasActivity extends AppCompatActivity {
         cervezas.setOnClickListener(v -> abrirDetalleProducto("pdB9R4z5fxagwzwmGntU"));
     }
 
-    // Función que abre el detalle del producto
+    /**
+     * Abre la actividad de detalles de un producto específico.
+     *
+     * @param productoId El ID del producto a mostrar en detalle.
+     */
     private void abrirDetalleProducto(String productoId) {
         Intent intent = new Intent(bebidasActivity.this, detallesBebidas.class);
         intent.putExtra("productoId", productoId);
