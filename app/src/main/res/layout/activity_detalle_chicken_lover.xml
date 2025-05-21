@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/flecha"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="52dp"
+        android:layout_height="48dp"
         android:clickable="true"
         android:contentDescription="Volver atrás"
         android:focusable="true"
@@ -21,8 +21,8 @@
         android:id="@+id/imagenProducto"
         android:layout_width="370dp"
         android:layout_height="250dp"
-        android:scaleType="centerCrop"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:scaleType="centerCrop" />
 
     <TextView
         android:id="@+id/nombreProducto"
@@ -37,23 +37,23 @@
         android:id="@+id/descripcionProducto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="8dp"
         android:text="Descripción"
-        android:textColor="@color/white"
-        android:paddingTop="8dp" />
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/precioProducto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="8dp"
         android:text="Precio"
         android:textColor="@color/white"
-        android:textStyle="bold"
-        android:paddingTop="8dp" />
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/botonComprar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Comprar"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:text="Comprar" />
 </LinearLayout>

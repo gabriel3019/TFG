@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/flecha"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:clickable="true"
         android:contentDescription="Volver atrás"
         android:focusable="true"

@@ -8,13 +8,13 @@
 
     <ImageView
         android:id="@+id/flecha"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="58dp"
+        android:layout_height="48dp"
         android:clickable="true"
-        android:focusable="true"
         android:contentDescription="Volver atrás"
-        android:src="@drawable/flecha_casa"
-        android:padding="4dp"/>
+        android:focusable="true"
+        android:padding="4dp"
+        android:src="@drawable/flecha_blanca" />
 
     <ImageView
         android:id="@+id/imagenProducto"
