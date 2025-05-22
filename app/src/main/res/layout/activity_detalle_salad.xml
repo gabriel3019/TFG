@@ -54,6 +54,7 @@
         android:id="@+id/botonComprar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Comprar"
+        android:backgroundTint="@color/red"
+        android:text="Pedir"
         android:layout_marginTop="16dp" />
 </LinearLayout>

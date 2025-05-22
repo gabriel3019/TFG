@@ -1,9 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- res/drawable/edittext_background.xml -->
-    <shape xmlns:android="http://schemas.android.com/apk/res/android">
-        <solid android:color="#FFFFFF"/> <!-- Color de fondo -->
-        <corners android:radius="8dp"/> <!-- Bordes redondeados -->
-        <stroke android:color="#000000" android:width="2dp"/> <!-- Borde negro -->
-    </shape>
-</selector>
+<!-- res/drawable/edittext_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <solid android:color="@android:color/white" />
+
+    <!-- Bordes redondeados -->
+    <corners android:radius="12dp" />
+
+    <!-- Borde visible -->
+    <stroke
+        android:width="2dp"
+        android:color="#999999" />
+
+</shape>
