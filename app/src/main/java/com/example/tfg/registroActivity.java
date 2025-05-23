@@ -201,7 +201,7 @@ public class registroActivity extends AppCompatActivity {
                                 .set(usuario)
                                 .addOnSuccessListener(aVoid -> {
                                     Toast.makeText(registroActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(registroActivity.this, menuActivity.class));
+                                    startActivity(new Intent(registroActivity.this, loginActivity.class));
                                     finish();
                                 })
                                 .addOnFailureListener(e -> Log.e("Firebase", "Error al guardar usuario", e));
