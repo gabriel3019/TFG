@@ -247,12 +247,11 @@
         android:id="@+id/recyclerViewResultados"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/guideline_HomeTop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView"/>
+        app:layout_constraintTop_toBottomOf="@+id/guideline_Top" />
 
     <!-- Directrices restantes (se mantienen igual) -->
     <androidx.constraintlayout.widget.Guideline
