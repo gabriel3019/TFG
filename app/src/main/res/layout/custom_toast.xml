@@ -1,0 +1,28 @@
+<!-- res/layout/custom_toast.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:background="@drawable/toast_background"
+    android:padding="10dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/toast_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/logo_goiko4"
+        android:background="@drawable/circle_background"
+        android:scaleType="fitCenter"
+        android:clipToOutline="true" />
+
+    <TextView
+        android:id="@+id/toast_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:paddingStart="10dp"
+        android:layout_gravity="center_vertical"
+        android:text="Texto de ejemplo" />
+
+
+</LinearLayout>
