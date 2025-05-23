@@ -36,8 +36,6 @@
             app:layout_constraintVertical_bias="0.507" />
 
 
-
-
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline30"
             android:layout_width="wrap_content"
@@ -133,9 +131,9 @@
     <Button
         android:id="@+id/btnCarta"
         android:layout_width="141dp"
-        android:backgroundTint="#000000"
         android:layout_height="150dp"
         android:layout_marginBottom="4dp"
+        android:backgroundTint="#000000"
         android:text="CARTA"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/guideline19"
@@ -202,6 +200,21 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline23"
         app:layout_constraintStart_toStartOf="@+id/guideline_HomeRight"
         app:layout_constraintTop_toTopOf="@+id/guideline20" />
+
+    <Button
+        android:id="@+id/btnInicio"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:backgroundTint="@android:color/black"
+        android:text="Inicio"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline23"
+        app:layout_constraintHorizontal_bias="0.525"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline21"
+        app:layout_constraintVertical_bias="0.238" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline19"

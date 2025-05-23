@@ -32,6 +32,7 @@ public class menuActivity extends AppCompatActivity {
 
     private Button btnPedidos;
 
+    private Button btnInicio;
     /**
      * Método llamado al crear la actividad. Se inicializan todos los componentes
      * y se configuran los listeners para los botones.
@@ -51,6 +52,7 @@ public class menuActivity extends AppCompatActivity {
         btnAlergenos = findViewById(R.id.btnAlergenos);
         btnReservas = findViewById(R.id.btnReservas);
         btnPedidos = findViewById(R.id.btnPedidos);
+        btnInicio = findViewById(R.id.btnInicio);
 
 
 
@@ -86,6 +88,11 @@ public class menuActivity extends AppCompatActivity {
 
         btnPedidos.setOnClickListener(v -> {
             Intent intent = new Intent(menuActivity.this, PedidosActivity.class);
+            startActivity(intent);
+        });
+
+        btnInicio.setOnClickListener(v -> {
+            Intent intent = new Intent(menuActivity.this, loginActivity.class);
             startActivity(intent);
         });
     }
