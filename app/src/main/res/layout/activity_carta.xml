@@ -108,147 +108,147 @@
         <GridLayout
             android:id="@+id/gridLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:padding="15dp"
-            android:orientation="horizontal"
+            android:layout_height="match_parent"
             android:alignmentMode="alignMargins"
+            android:columnCount="2"
+            android:orientation="horizontal"
+            android:padding="15dp"
             android:rowOrderPreserved="false">
 
             <!-- Carta 1 -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
+                android:layout_margin="8dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/entrantes"
                     android:layout_width="180dp"
                     android:layout_height="134dp"
-                    android:src="@drawable/carta1"
-                    android:scaleType="fitXY"/>
+                    android:scaleType="fitXY"
+                    android:src="@drawable/carta1" />
             </LinearLayout>
 
             <!-- Carta 2 -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
+                android:layout_margin="8dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/hamburguesas"
                     android:layout_width="180dp"
                     android:layout_height="134dp"
-                    android:src="@drawable/carta2"
-                    android:scaleType="fitXY"/>
+                    android:scaleType="fitXY"
+                    android:src="@drawable/carta2" />
             </LinearLayout>
 
             <!-- Carta 3 -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
+                android:layout_margin="8dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/smashburgers"
                     android:layout_width="180dp"
                     android:layout_height="134dp"
-                    android:src="@drawable/carta3"
-                    android:scaleType="fitXY"/>
+                    android:scaleType="fitXY"
+                    android:src="@drawable/carta3" />
             </LinearLayout>
 
             <!-- carta 4 -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
+                android:layout_margin="8dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/chicken_lovers"
                     android:layout_width="180dp"
                     android:layout_height="134dp"
-                    android:src="@drawable/carta4"
-                    android:scaleType="fitXY"/>
+                    android:scaleType="fitXY"
+                    android:src="@drawable/carta4" />
             </LinearLayout>
 
             <!-- carta 5 -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
+                android:layout_margin="8dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/para_peques"
                     android:layout_width="180dp"
                     android:layout_height="134dp"
-                    android:src="@drawable/carta5"
-                    android:scaleType="fitXY"/>
+                    android:scaleType="fitXY"
+                    android:src="@drawable/carta5" />
             </LinearLayout>
 
             <!-- carta 6 -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
+                android:layout_margin="8dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/salad"
                     android:layout_width="180dp"
                     android:layout_height="134dp"
-                    android:src="@drawable/carta6"
-                    android:scaleType="fitXY"/>
+                    android:scaleType="fitXY"
+                    android:src="@drawable/carta6" />
             </LinearLayout>
 
             <!-- carta 7 -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
+                android:layout_margin="8dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/postres"
                     android:layout_width="180dp"
                     android:layout_height="134dp"
-                    android:src="@drawable/carta7"
-                    android:scaleType="fitXY"/>
+                    android:scaleType="fitXY"
+                    android:src="@drawable/carta7" />
             </LinearLayout>
 
             <!-- Carta 8 -->
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
+                android:layout_margin="8dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/bebidas"
                     android:layout_width="180dp"
                     android:layout_height="134dp"
-                    android:src="@drawable/carta8"
-                    android:scaleType="fitXY"/>
+                    android:scaleType="fitXY"
+                    android:src="@drawable/carta8" />
             </LinearLayout>
         </GridLayout>
     </ScrollView>
