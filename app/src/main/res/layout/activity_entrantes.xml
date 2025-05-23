@@ -203,14 +203,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.98" />
+        app:layout_constraintGuide_percent="0.93" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_HomeTop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.92" />
+        app:layout_constraintGuide_percent="0.89" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_HomeLeft"
@@ -241,14 +241,14 @@
 
     <ImageView
         android:id="@+id/flecha"
-        android:layout_width="39dp"
-        android:layout_height="45dp"
+        android:layout_width="21dp"
+        android:layout_height="21dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline_HomeLeft"
-        app:layout_constraintHorizontal_bias="0.604"
+        app:layout_constraintHorizontal_bias="0.852"
         app:layout_constraintStart_toStartOf="@+id/guideline_LogoRight"
         app:layout_constraintTop_toTopOf="@+id/guideline_HomeTop"
-        app:layout_constraintVertical_bias="0.153"
+        app:layout_constraintVertical_bias="0.118"
         app:srcCompat="@drawable/flecha_casa" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
