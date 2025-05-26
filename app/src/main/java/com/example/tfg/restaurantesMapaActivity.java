@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -23,6 +22,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -39,12 +39,14 @@ import java.util.Comparator;
  */
 public class restaurantesMapaActivity extends AppCompatActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
-    private ImageButton btnHome;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+
+    private GoogleMap mMap;
     private FusedLocationProviderClient fusedLocationClient;
     private Location ubicacionActual;
+    private Location ubicacionFake;
     private ArrayList<Restaurante> listaRestaurantes = new ArrayList<>();
+    private ImageButton btnHome;
 
     /**
      * Método llamado al crear la actividad.
@@ -54,11 +56,10 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_restaurantes_mapa);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            Insets sys = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(sys.left, sys.top, sys.right, sys.bottom);
             return insets;
         });
 
@@ -68,50 +69,18 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
             startActivity(intent);
         });
 
+        // Ubicación FAKE para testing sin GPS real
+        ubicacionFake = new Location("mock");
+        ubicacionFake.setLatitude(40.43376);
+        ubicacionFake.setLongitude(-3.63169);
+
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        // Verificar permisos y cargar mapa
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            obtenerUbicacionYConfigurarMapa();
-        } else {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
-        }
-
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        SupportMapFragment mapFragment =
+                (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
-        }
-    }
-
-    /**
-     * Obtiene la ubicación del dispositivo y configura el mapa.
-     */
-    private void obtenerUbicacionYConfigurarMapa() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
-        fusedLocationClient.getLastLocation().addOnSuccessListener(location -> {
-            if (location != null) {
-                ubicacionActual = location;
-                if (mMap != null) {
-                    configurarMapaConUbicacion(location);
-                    LatLng currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLocation, 15));
-                }
-            } else {
-                Toast.makeText(this, "No se pudo obtener ubicación", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    /**
-     * Callback que se llama tras solicitar permisos.
-     */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE && grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            obtenerUbicacionYConfigurarMapa();
         }
     }
 
@@ -124,58 +93,86 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
         mMap.getUiSettings().setZoomControlsEnabled(true);
-        mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+        // Cambiado a mapa normal (calles, POIs, etc.)
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-        if (ubicacionActual != null) {
-            configurarMapaConUbicacion(ubicacionActual);
+        // Verificar permisos de ubicación
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                    this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    LOCATION_PERMISSION_REQUEST_CODE
+            );
+            return;
         }
+
+        // Permiso concedido: activar capa de Mi Ubicación
+        mMap.setMyLocationEnabled(true);
+
+        // Obtener última ubicación conocida
+        fusedLocationClient.getLastLocation()
+                .addOnSuccessListener(location -> {
+                    if (location == null) {
+                        Toast.makeText(this, "No se pudo obtener ubicación", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    ubicacionActual = location;
+                    LatLng current = new LatLng(location.getLatitude(), location.getLongitude());
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(current, 15));
+
+                    // Cargar y marcar restaurantes
+                    cargarRestaurantes();
+                });
     }
 
     /**
-     * Configura el mapa mostrando la ubicación actual y los restaurantes cercanos.
-     *
-     * @param location Ubicación actual del usuario.
+     * Callback que se llama tras solicitar permisos.
      */
-    private void configurarMapaConUbicacion(Location location) {
-        LatLng currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15));
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            mMap.setMyLocationEnabled(true);
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE
+                && grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            // Reintentar inicialización del mapa
+            SupportMapFragment mapFragment =
+                    (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+            if (mapFragment != null) {
+                mapFragment.getMapAsync(this);
+            }
         }
-        cargarRestaurantes();
     }
 
     /**
      * Carga los restaurantes desde Firestore y los añade a la lista ordenada por distancia.
      */
     private void cargarRestaurantes() {
+        if (ubicacionActual == null || mMap == null) return;
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Restaurantes").get().addOnCompleteListener(task -> {
-            if (task.isSuccessful() && ubicacionActual != null) {
+            if (task.isSuccessful()) {
                 listaRestaurantes.clear();
                 for (DocumentSnapshot doc : task.getResult()) {
-                    try {
-                        String name = doc.getString("nombre");
-                        String address = doc.getString("direccion");
-                        String province = doc.getString("provincia");
-                        double telephone = doc.getDouble("telefono");
-                        double latitude = doc.getDouble("latitud");
-                        double longitude = doc.getDouble("longitud");
-
-                        int telephoneInt = (int) telephone;
-
-                        // Verificación null para coordenadas
-                        if (latitude != 0.0 && longitude != 0.0) {
-                            double distance = calcularDistanciaKM(
-                                    ubicacionActual.getLatitude(),
-                                    ubicacionActual.getLongitude(),
-                                    latitude,
-                                    longitude
-                            );
-                            listaRestaurantes.add(new Restaurante(name, address, province, telephoneInt, latitude, longitude, distance));
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
+                    Double lat = doc.getDouble("latitud");
+                    Double lng = doc.getDouble("longitud");
+                    String name = doc.getString("nombre");
+                    String address = doc.getString("direccion");
+                    String province = doc.getString("provincia");
+                    Double telD = doc.getDouble("telefono");
+                    if (lat != null && lng != null && lat != 0.0 && lng != 0.0) {
+                        double distance = calcularDistanciaKM(
+                                ubicacionActual.getLatitude(),
+                                ubicacionActual.getLongitude(),
+                                lat, lng
+                        );
+                        int telephone = telD != null ? telD.intValue() : 0;
+                        listaRestaurantes.add(
+                                new Restaurante(name, address, province, telephone, lat, lng, distance)
+                        );
                     }
                 }
                 Collections.sort(listaRestaurantes, Comparator.comparingDouble(Restaurante::getDistance));
@@ -190,18 +187,16 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
      * Añade los marcadores de restaurantes al mapa.
      */
     private void ponerMarcadoresAlMapa() {
-        if (mMap == null) return;
-
         mMap.clear();
-        for (Restaurante restaurante : listaRestaurantes) {
-            LatLng posicion = new LatLng(restaurante.getLat(), restaurante.getLng());
-
+        BitmapDescriptor iconoLogo = BitmapDescriptorFactory.fromResource(R.drawable.logo_mapa);
+        for (Restaurante r : listaRestaurantes) {
+            LatLng pos = new LatLng(r.getLat(), r.getLng());
             mMap.addMarker(new MarkerOptions()
-                    .position(posicion)
-                    .title(restaurante.getName())
-                    .snippet("Distancia: " + String.format("%.2f km", restaurante.getDistance()))
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.logo_mapa)) // Icono personalizado
-                    .anchor(0.5f, 1.0f) // Ajusta el punto de anclaje (opcional)
+                    .position(pos)
+                    .title(r.getName())
+                    .snippet(String.format("Distancia: %.2f km", r.getDistance()))
+                    .icon(iconoLogo)
+                    .anchor(0.5f, 0.5f)
             );
         }
     }
@@ -219,15 +214,5 @@ public class restaurantesMapaActivity extends AppCompatActivity implements OnMap
         float[] results = new float[1];
         Location.distanceBetween(lat1, lon1, lat2, lon2, results);
         return results[0] / 1000.0;
-    }
-
-    /**
-     * Callback llamado cuando cambia la captura de puntero.
-     *
-     * @param hasCapture true si hay captura, false si no.
-     */
-    @Override
-    public void onPointerCaptureChanged(boolean hasCapture) {
-        super.onPointerCaptureChanged(hasCapture);
     }
 }
