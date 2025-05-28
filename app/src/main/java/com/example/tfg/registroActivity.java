@@ -11,10 +11,10 @@ import android.widget.Toast;
 import android.widget.ImageView;
 import android.widget.EditText;
 import android.app.DatePickerDialog;
+
 import java.util.Calendar;
 import java.util.Locale;
-
-
+import java.util.regex.Pattern;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -23,35 +23,43 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 /**
- * Clase {@code registroActivity} encargada de manejar el registro de nuevos usuarios en la aplicación.
- * Incluye validaciones de campos, creación de usuarios con Firebase Authentication
- * y almacenamiento de información adicional en Firebase Firestore.
+ * Clase {@code registroActivity} que gestiona el proceso de registro de usuarios en la aplicación.
  *
+ * Esta actividad permite al usuario introducir sus datos personales, validar los campos
+ * y registrar la cuenta usando Firebase Authentication y Firebase Firestore.
  */
 public class registroActivity extends AppCompatActivity {
 
+    // Campos del formulario
     private EditText etContrasena, repetir_contrasena;
     private TextView etNombre, etApellidos, correo_electronico, numero_telefono, fecha_nacimiento;
     private Button btnRegistrarse;
+
+    // Firebase
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
 
     /**
-     * Expresión regular para validar contraseñas seguras:
-     * - Mínimo 8 caracteres
-     * - Al menos una mayúscula, una minúscula, un número y un símbolo especial
+     * Expresión regular para contraseñas seguras.
+     * Requiere al menos una mayúscula, una minúscula, un número, un símbolo especial y mínimo 8 caracteres.
      */
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!]).{8,}$");
 
     /**
-     * Método llamado al crear la actividad. Se inicializan los componentes de la interfaz,
-     * Firebase, y se configuran los listeners.
+     * Expresión regular para validar nombres: solo letras, espacios y tildes.
+     */
+    private static final Pattern NAME_PATTERN =
+            Pattern.compile("^[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+$");
+
+    /**
+     * Método que se ejecuta al iniciar la actividad.
+     * Se encarga de enlazar los elementos de la interfaz, configurar listeners,
+     * inicializar Firebase y establecer validaciones.
      *
-     * @param savedInstanceState Estado previamente guardado de la actividad
+     * @param savedInstanceState Estado previamente guardado de la actividad.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +70,7 @@ public class registroActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
-        // Referencias de campos
+        // Enlazar elementos del layout
         etNombre = findViewById(R.id.nombre);
         etApellidos = findViewById(R.id.apellidos);
         correo_electronico = findViewById(R.id.correo);
@@ -70,9 +78,10 @@ public class registroActivity extends AppCompatActivity {
         repetir_contrasena = findViewById(R.id.repetir_contrasena);
         numero_telefono = findViewById(R.id.numero_telefono);
         fecha_nacimiento = findViewById(R.id.fecha_nacimiento);
+
+        // Deshabilitar entrada manual en la fecha y mostrar DatePicker
         fecha_nacimiento.setFocusable(false);
         fecha_nacimiento.setClickable(true);
-
         fecha_nacimiento.setOnClickListener(v -> {
             Calendar calendar = Calendar.getInstance();
             int year = calendar.get(Calendar.YEAR);
@@ -87,13 +96,25 @@ public class registroActivity extends AppCompatActivity {
                     },
                     year, month, day
             );
+
+            // No permitir fechas futuras
+            datePickerDialog.getDatePicker().setMaxDate(calendar.getTimeInMillis());
             datePickerDialog.show();
         });
 
+        // Botón de registro
         btnRegistrarse = findViewById(R.id.btnRegistrarse);
-        Button btnIrALogin = findViewById(R.id.btnIrALogin);
+        btnRegistrarse.setOnClickListener(v -> registrarUsuario());
 
-        // ---- OJO CONTRASEÑA ----
+        // Botón para ir al login
+        Button btnIrALogin = findViewById(R.id.btnIrALogin);
+        btnIrALogin.setOnClickListener(v -> {
+            Intent intent = new Intent(registroActivity.this, loginActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
+        // Mostrar/ocultar contraseña
         ImageView ojoContraseña = findViewById(R.id.ojoContraseña);
         final boolean[] isPasswordVisible = {false};
         ojoContraseña.setOnClickListener(v -> {
@@ -110,7 +131,7 @@ public class registroActivity extends AppCompatActivity {
             etContrasena.setSelection(etContrasena.getText().length());
         });
 
-        // ---- OJO REPETIR CONTRASEÑA ----
+        // Mostrar/ocultar repetir contraseña
         ImageView ojoRepetir = findViewById(R.id.ojoRepetirContrasena);
         final boolean[] isRepeatVisible = {false};
         ojoRepetir.setOnClickListener(v -> {
@@ -126,21 +147,12 @@ public class registroActivity extends AppCompatActivity {
             }
             repetir_contrasena.setSelection(repetir_contrasena.getText().length());
         });
-
-        // Botón para volver al login
-        btnIrALogin.setOnClickListener(v -> {
-            Intent intent = new Intent(registroActivity.this, loginActivity.class);
-            startActivity(intent);
-            finish();
-        });
-
-        // Botón de registro
-        btnRegistrarse.setOnClickListener(v -> registrarUsuario());
     }
 
     /**
-     * Método que realiza las validaciones y registra al usuario en Firebase Authentication.
-     * En caso de éxito, también almacena los datos adicionales en Firestore.
+     * Método que valida los campos introducidos por el usuario
+     * y si todo es correcto, crea el usuario en Firebase Authentication y
+     * guarda los datos en Firebase Firestore.
      */
     private void registrarUsuario() {
         String nombre = etNombre.getText().toString().trim();
@@ -151,7 +163,7 @@ public class registroActivity extends AppCompatActivity {
         String telefono = numero_telefono.getText().toString().trim();
         String fechaNacimiento = fecha_nacimiento.getText().toString().trim();
 
-        // Validaciones generales
+        // Validar campos obligatorios
         if (TextUtils.isEmpty(nombre) || TextUtils.isEmpty(apellidos) || TextUtils.isEmpty(correo) ||
                 TextUtils.isEmpty(contrasena) || TextUtils.isEmpty(repetirContrasena) ||
                 TextUtils.isEmpty(telefono) || TextUtils.isEmpty(fechaNacimiento)) {
@@ -159,21 +171,27 @@ public class registroActivity extends AppCompatActivity {
             return;
         }
 
-        // Validar formato de email
+        // Validar formato del nombre
+        if (!NAME_PATTERN.matcher(nombre).matches()) {
+            Toast.makeText(this, "El nombre solo puede contener letras y espacios", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Validar correo electrónico
         if (!Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
             Toast.makeText(this, "Introduce un correo electrónico válido", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Validar formato de teléfono (solo números y al menos 9 dígitos)
+        // Validar número de teléfono
         if (!telefono.matches("\\d{9,}")) {
             Toast.makeText(this, "Introduce un número de teléfono válido (mínimo 9 dígitos)", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Validar contraseña
+        // Validar contraseña segura
         if (!PASSWORD_PATTERN.matcher(contrasena).matches()) {
-            Toast.makeText(this, "La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial (@#$%^&+=!)", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -183,13 +201,13 @@ public class registroActivity extends AppCompatActivity {
             return;
         }
 
-        // Registrar en Firebase Authentication
+        // Crear usuario en Firebase Authentication
         mAuth.createUserWithEmailAndPassword(correo, contrasena)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         String userId = mAuth.getCurrentUser().getUid();
 
-                        // Guardar datos en Firestore
+                        // Crear el mapa con los datos del usuario
                         Map<String, Object> usuario = new HashMap<>();
                         usuario.put("nombre", nombre);
                         usuario.put("apellidos", apellidos);
@@ -197,6 +215,7 @@ public class registroActivity extends AppCompatActivity {
                         usuario.put("numero_telefono", telefono);
                         usuario.put("fecha_nacimiento", fechaNacimiento);
 
+                        // Guardar en Firestore
                         db.collection("Usuarios").document(userId)
                                 .set(usuario)
                                 .addOnSuccessListener(aVoid -> {
