@@ -66,6 +66,8 @@ public class DetalleEntranteActivity extends AppCompatActivity {
             View layout = inflater.inflate(R.layout.custom_toast, null);
 
             TextView text = layout.findViewById(R.id.toast_text);
+            text.setText("Clic detectado");
+
 
             Toast toast = new Toast(getApplicationContext());
             toast.setDuration(Toast.LENGTH_SHORT);
@@ -74,7 +76,6 @@ public class DetalleEntranteActivity extends AppCompatActivity {
 
             finish();
         });
-
         // Evento del botón "comprar"
         botonComprar.setOnClickListener(v -> {
             Intent intent = new Intent(DetalleEntranteActivity.this, PedidosActivity.class);
